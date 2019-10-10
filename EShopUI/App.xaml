@@ -18,6 +18,10 @@
             <SolidColorBrush x:Key="BackgroundColor" Color="{StaticResource WhiteRedColor}" />
             <Color x:Key="WhiteBlueColor">#F8EFFB</Color>
             <SolidColorBrush x:Key="MenuTabColor" Color="{StaticResource WhiteBlueColor}" />
+            <SolidColorBrush
+                x:Key="BackgroundTransperentBrush"
+                Opacity=".7"
+                Color="LightGray" />
 
             <!--
                 STYLES

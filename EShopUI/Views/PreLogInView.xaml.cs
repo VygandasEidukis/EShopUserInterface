@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EShopUI.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,31 @@ namespace EShopUI.Views
     /// </summary>
     public partial class PreLogInView : UserControl
     {
+        private PreLogInViewModel dataContext;
         public PreLogInView()
         {
             InitializeComponent();
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            dataContext = DataContext as PreLogInViewModel;
+
+            dataContext.notifyOpenPopup += PopUpNotify;
+        }
+
+        private void ButtonNotificationOk_Click(object sender, RoutedEventArgs e)
+        {
+            NotificationWindow.Visibility = Visibility.Collapsed;
+        }
+
+        private void PopUpNotify()
+        {
+            NotificationWindow.Visibility = Visibility.Visible;
+        }
+
+        
+
+       
     }
 }

@@ -1,0 +1,47 @@
+﻿<UserControl
+    x:Class="EShopUI.Views.LogInView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cal="http://www.caliburnproject.org"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:EShopUI.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Background="{StaticResource BackgroundColor}"
+    mc:Ignorable="d">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <UserControl
+            x:Name="LoginScreen"
+            Grid.Row="0"
+            Grid.Column="0"
+            Visibility="Visible">
+            <StackPanel
+                Height="250"
+                Margin="0,0,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+
+                <TextBlock Text="Username" />
+                <TextBox Width="205" Height="20" />
+                <TextBlock Text="Password" />
+                <TextBox Width="205" Height="20" />
+                <Button
+                    x:Name="ButtonLogIn"
+                    Width="205"
+                    Height="20"
+                    Margin="0,20,0,0"
+                    Background="Transparent"
+                    Content="Log In" />
+
+            </StackPanel>
+        </UserControl>
+    </Grid>
+</UserControl>
