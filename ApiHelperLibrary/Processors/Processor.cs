@@ -8,7 +8,7 @@ namespace ApiHelperLibrary.Processors
 {
     public class Processor
     {
-        public static string ApiPageLink { get; set; } = "https://localhost:44313/api/";
+        public static string ApiPageLink { get; set; } = "http://localhost:8080/api/";
         public static string LinkGetUserById(int id)
         {
             return ApiPageLink + $"User/{id}";
@@ -17,6 +17,11 @@ namespace ApiHelperLibrary.Processors
         public static string LinkGetUsers()
         {
             return ApiPageLink + $"User";
+        }
+
+        public static string LinkLogInUser()
+        {
+            return ApiPageLink + $"User/LogIn";
         }
     }
 }

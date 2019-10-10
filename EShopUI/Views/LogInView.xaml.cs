@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EShopUI.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,21 @@ namespace EShopUI.Views
     /// </summary>
     public partial class LogInView : UserControl
     {
+        private LogInViewModel dataContext;
         public LogInView()
         {
             InitializeComponent();
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            dataContext = DataContext as LogInViewModel;
+            dataContext.sendNotifyCall += CallNotification;
+        }
+
+        public void CallNotification(string title, string text)
+        {
+            (dataContext.Parent as PreLogInViewModel).CallPopup(title, text);
         }
     }
 }

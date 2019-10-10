@@ -9,6 +9,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     Background="{StaticResource BackgroundColor}"
+    Loaded="UserControl_Loaded"
     mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
@@ -30,14 +31,23 @@
                 VerticalAlignment="Center">
 
                 <TextBlock Text="Username" />
-                <TextBox Width="205" Height="20" />
+                <TextBox
+                    x:Name="TextBoxUsername"
+                    Width="205"
+                    Height="20"
+                    Text="{Binding TextBoxUsername, Mode=TwoWay}" />
                 <TextBlock Text="Password" />
-                <TextBox Width="205" Height="20" />
+                <TextBox
+                    x:Name="TextBoxPassword"
+                    Width="205"
+                    Height="20"
+                    Text="{Binding TextBoxPassword, Mode=TwoWay}" />
                 <Button
                     x:Name="ButtonLogIn"
                     Width="205"
                     Height="20"
                     Margin="0,20,0,0"
+                    cal:Message.Attach="ButtonLogIn"
                     Background="Transparent"
                     Content="Log In" />
 
