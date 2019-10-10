@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using ApiHelperLibrary;
 using ApiHelperLibrary.Models;
 using ApiHelperLibrary.Processors;
+using EShopUI.ViewModels;
 
 namespace EShopUI.Views
 {
@@ -20,10 +21,27 @@ namespace EShopUI.Views
 
         private void Page_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            /*(await UserProcessor.GetUsers()).ForEach(delegate (UserModel user) 
+            (DataContext as MainViewModel).loadLoadingScreen += LoadLoadingScreen;
+            (DataContext as MainViewModel).unloadLoadingScreen += UnloadLoadingScreen;
+        }
+
+        public void LoadLoadingScreen()
+        {
+            Dispatcher.Invoke(new Action(() =>
             {
-                ///UserNameBox.Items.Add(user.FirstName);
-            });*/
+                Spinner.Spin = true;
+                LoadingScreen.Visibility = Visibility.Visible;
+            }));
+            
+        }
+
+        public void UnloadLoadingScreen()
+        {
+            Dispatcher.Invoke(new Action(()=> 
+            {
+                Spinner.Spin = false;
+                LoadingScreen.Visibility = Visibility.Collapsed;
+            }));
         }
     }
 }

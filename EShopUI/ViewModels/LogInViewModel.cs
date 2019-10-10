@@ -47,16 +47,35 @@ namespace EShopUI.ViewModels
         #region events
         public async void ButtonLogIn()
         {
-            UserModel user =  await UserProcessor.LogInUser(new UserModel() { Username = TextBoxUsername, Password = TextBoxPassword});
-            if(user == null)
+            try
             {
-                CallNotification("Failed to login", "Invalid username or password");
-            }
-            else
+                LoadLoadingScreen();
+                UserModel user = await UserProcessor.LogInUser(new UserModel() { Username = TextBoxUsername, Password = TextBoxPassword }).ContinueWith(
+                    (task)=>
+                    {
+                        UnloadLoadingScreen();
+                        try
+                        {
+                            return task.Result;
+                        }catch
+                        {
+                            return null;
+                        }
+                    });
+                if (user == null)
+                {
+                    CallNotification("Failed to login", "Invalid username or password");
+                }
+                else
+                {
+                    CallNotification("Logged in", $"{user.FirstName}  {user.LastName}");
+                    //TODO: should redirect to front page
+                }
+            }catch(Exception ex)
             {
-                CallNotification("Logged in", $"{user.FirstName}  {user.LastName}");
-                //TODO: should redirect to front page
+                CallNotification("Internal exception", ex.Message);
             }
+            
         }
 
         public void OnPasswordChanged(PasswordBox source)
@@ -69,6 +88,16 @@ namespace EShopUI.ViewModels
         {
             if (sendNotifyCall != null)
                 sendNotifyCall.Invoke(title, text);
+        }
+
+        private void LoadLoadingScreen()
+        {
+            ((this.Parent as PreLogInViewModel).Parent as MainViewModel).loadLoadingScreen.Invoke();
+        }
+
+        private void UnloadLoadingScreen()
+        {
+            ((this.Parent as PreLogInViewModel).Parent as MainViewModel).unloadLoadingScreen.Invoke();
         }
     }
 }

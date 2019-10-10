@@ -41,24 +41,43 @@ namespace EShopUI.ViewModels
         #region events
         public async void ButtonRegister()
         {
-            if(PasswordRepeat != User.Password)
+            try
             {
-                if (sendNotifyCall != null)
-                    sendNotifyCall.Invoke("Password error", "Passwords don't match, please make sure both passwords are the same");
-            }else
-            {
-                if(await UserProcessor.RegisterUser(User))
+                if (PasswordRepeat != User.Password)
                 {
-                    //succssesfull registration
                     if (sendNotifyCall != null)
-                        sendNotifyCall.Invoke("Registered", "Succssesfully registered");
+                        sendNotifyCall.Invoke("Password error", "Passwords don't match, please make sure both passwords are the same");
                 }
                 else
                 {
-                    //failed registration
-                    if (sendNotifyCall != null)
-                        sendNotifyCall.Invoke("Failed", "failed to register");
+                    LoadLoadingScreen();
+                    if (await UserProcessor.RegisterUser(User).ContinueWith(
+                        (task) => 
+                        {
+                            UnloadLoadingScreen();
+                            try {
+                                return task.Result;
+                            }catch
+                            {
+                                return false;
+                            }
+                        }))
+                    {
+                        //succssesfull registration   await UserProcessor.RegisterUser(User);
+                        if (sendNotifyCall != null)
+                            sendNotifyCall.Invoke("Registered", "Succssesfully registered");
+                    }
+                    else
+                    {
+                        //failed registration
+                        if (sendNotifyCall != null)
+                            sendNotifyCall.Invoke("Failed", "failed to register");
+                    }
                 }
+            }catch(Exception ex)
+            {
+                if (sendNotifyCall != null)
+                    sendNotifyCall.Invoke("Internal error", ex.Message);
             }
             
         }
@@ -73,5 +92,15 @@ namespace EShopUI.ViewModels
             PasswordRepeat = source.Password;
         }
         #endregion
+
+        private void LoadLoadingScreen()
+        {
+            ((this.Parent as PreLogInViewModel).Parent as MainViewModel).loadLoadingScreen.Invoke();
+        }
+
+        private void UnloadLoadingScreen()
+        {
+            ((this.Parent as PreLogInViewModel).Parent as MainViewModel).unloadLoadingScreen.Invoke();
+        }
     }
 }
