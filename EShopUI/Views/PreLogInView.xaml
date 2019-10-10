@@ -64,33 +64,45 @@
             <Grid
                 Width="300"
                 Height="200"
-                Background="LightGray">
-                <UserControl
-                    Height="40"
-                    VerticalAlignment="Top"
-                    Background="Gray">
-                    <TextBlock
-                        x:Name="NotificationTitle"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Foreground="White"
-                        Text="{Binding NotificationTitle, Mode=TwoWay}" />
-                </UserControl>
-                <TextBlock
-                    x:Name="NotificationMessage"
-                    Margin="5,45,5,40"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Text="{Binding NotificationMessage, Mode=TwoWay}" />
-                <Button
-                    x:Name="ButtonNotificationOk"
-                    Width="80"
-                    Height="30"
-                    Margin="0,5,0,5"
-                    VerticalAlignment="Bottom"
-                    cal:Message.Attach="ButtonNotificationOk"
-                    Click="ButtonNotificationOk_Click"
-                    Content="OK" />
+                Background="{StaticResource MenuTabColor}">
+                <Border
+                    Margin="1,1,1,0"
+                    BorderBrush="Black"
+                    BorderThickness="1">
+                    <StackPanel>
+                        <Border BorderBrush="Black" BorderThickness="1">
+                            <UserControl
+                                Height="40"
+                                VerticalAlignment="Top"
+                                Background="{StaticResource BackgroundTransperentBrush}">
+                                <TextBlock
+                                    x:Name="NotificationTitle"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding NotificationTitle, Mode=TwoWay}" />
+                            </UserControl>
+                        </Border>
+
+                        <TextBlock
+                            x:Name="NotificationMessage"
+                            Margin="5,45,5,40"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Text="{Binding NotificationMessage, Mode=TwoWay}" />
+                        <Button
+                            x:Name="ButtonNotificationOk"
+                            Width="80"
+                            Height="30"
+                            Margin="0,5,0,5"
+                            VerticalAlignment="Bottom"
+                            cal:Message.Attach="ButtonNotificationOk"
+                            Background="{StaticResource BackgroundColor}"
+                            Click="ButtonNotificationOk_Click"
+                            Content="OK" />
+                    </StackPanel>
+                </Border>
+
+
             </Grid>
         </UserControl>
     </Grid>

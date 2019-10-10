@@ -14,14 +14,17 @@
             <!--
                 Main colors
             -->
-            <Color x:Key="WhiteRedColor">#FBEFEF</Color>
-            <SolidColorBrush x:Key="BackgroundColor" Color="{StaticResource WhiteRedColor}" />
-            <Color x:Key="WhiteBlueColor">#F8EFFB</Color>
-            <SolidColorBrush x:Key="MenuTabColor" Color="{StaticResource WhiteBlueColor}" />
+            <Color x:Key="BlackTextColor">#000000</Color>
+            <Color x:Key="InnerWindowBackgroundColor">#efc9af</Color>
+            <Color x:Key="BackgroundColorr">#ffffff</Color>
+            <Color x:Key="ExtraColorBackgroundColor">#EAE2FD</Color>
+            <Color x:Key="ExtraColorForegroundColor">#CFCAE4</Color>
+            <SolidColorBrush x:Key="BackgroundColor" Color="{StaticResource ExtraColorBackgroundColor}" />
+            <SolidColorBrush x:Key="MenuTabColor" Color="{StaticResource ExtraColorForegroundColor}" />
             <SolidColorBrush
                 x:Key="BackgroundTransperentBrush"
                 Opacity=".7"
-                Color="LightGray" />
+                Color="{StaticResource ExtraColorBackgroundColor}" />
 
             <!--
                 STYLES
