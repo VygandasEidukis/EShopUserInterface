@@ -22,5 +22,17 @@ namespace ApiHelperLibrary.Processors
                 throw new Exception("User does't exist in current api");
             }
         }
+
+        public static async Task<List<UserModel>> GetUsers()
+        {
+            using (HttpResponseMessage response = await ApiHelper.apiClient.GetAsync(LinkGetUsers()))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsAsync<List<UserModel>>();
+                }
+                throw new Exception("Unexpected error in UserProcessor");
+            }
+        }
     }
 }

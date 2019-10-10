@@ -2,11 +2,11 @@
 
 namespace EShopUI.ViewModels
 {
-    class MainViewModel : Screen
+    class MainViewModel : Conductor<object>
     {
         public MainViewModel()
         {
-
+            ActivateItem(new PreLogInViewModel());
         }
     }
 }

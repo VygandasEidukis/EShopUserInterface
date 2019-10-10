@@ -1,4 +1,4 @@
-﻿<Page
+﻿<Window
     x:Class="EShopUI.Views.MainView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -8,13 +8,32 @@
     Title="MainView"
     Width="800"
     Height="450"
+    MinWidth="800"
+    MinHeight="450"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    Background="White"
+    Background="WhiteSmoke"
     Loaded="Page_Loaded"
     mc:Ignorable="d">
 
+    <Window.Resources>
+        <Style x:Key="UIButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+    </Window.Resources>
+
     <Grid>
-        <ListBox x:Name="UserNameBox" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <ContentControl
+            x:Name="ActiveItem"
+            Grid.Row="0"
+            Grid.Column="0" />
     </Grid>
-</Page>
+</Window>

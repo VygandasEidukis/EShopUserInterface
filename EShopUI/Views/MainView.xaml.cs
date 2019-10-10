@@ -1,5 +1,8 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
 using ApiHelperLibrary;
+using ApiHelperLibrary.Models;
 using ApiHelperLibrary.Processors;
 
 namespace EShopUI.Views
@@ -7,7 +10,7 @@ namespace EShopUI.Views
     /// <summary>
     /// Interaction logic for MainView.xaml
     /// </summary>
-    public partial class MainView : Page
+    public partial class MainView : Window
     {
         public MainView()
         {
@@ -15,9 +18,12 @@ namespace EShopUI.Views
             ApiHelper.InitializeClient();
         }
 
-        private async void Page_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        private void Page_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            UserNameBox.Items.Add((await UserProcessor.GetUserByID(1)).FirstName);
+            /*(await UserProcessor.GetUsers()).ForEach(delegate (UserModel user) 
+            {
+                ///UserNameBox.Items.Add(user.FirstName);
+            });*/
         }
     }
 }
