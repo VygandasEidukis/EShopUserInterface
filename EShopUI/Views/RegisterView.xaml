@@ -9,6 +9,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     Background="{StaticResource BackgroundColor}"
+    Loaded="UserControl_Loaded"
     mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
@@ -28,28 +29,47 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
                 <TextBlock Width="200">Username</TextBlock>
-                <TextBox x:Name="textBoxUsername" Width="200" />
+                <TextBox
+                    x:Name="textBoxUsername"
+                    Width="200"
+                    Text="{Binding User.Username, Mode=TwoWay}" />
 
                 <TextBlock Width="200">Firstname</TextBlock>
-                <TextBox x:Name="textBoxFirstName" Width="200" />
+                <TextBox
+                    x:Name="textBoxFirstName"
+                    Width="200"
+                    Text="{Binding User.FirstName, Mode=TwoWay}" />
 
                 <TextBlock Width="200">Lastname</TextBlock>
-                <TextBox x:Name="textBoxLastName" Width="200" />
+                <TextBox
+                    x:Name="textBoxLastName"
+                    Width="200"
+                    Text="{Binding User.LastName, Mode=TwoWay}" />
 
                 <TextBlock Width="200">E-mail</TextBlock>
-                <TextBox x:Name="textBoxEmail" Width="200" />
+                <TextBox
+                    x:Name="textBoxEmail"
+                    Width="200"
+                    Text="{Binding User.Email, Mode=TwoWay}" />
 
                 <TextBlock Width="200">Password</TextBlock>
-                <PasswordBox x:Name="textBoxPassword" Width="200" />
+                <PasswordBox
+                    x:Name="textBoxPassword"
+                    Width="200"
+                    cal:Message.Attach="[Event PasswordChanged] = [Action OnPasswordChanged($source)]" />
 
                 <TextBlock Width="200">Re-enter password</TextBlock>
-                <PasswordBox x:Name="textBoxPasswordRepeat" Width="200" />
+                <PasswordBox
+                    x:Name="textBoxPasswordRepeat"
+                    Width="200"
+                    cal:Message.Attach="[Event PasswordChanged] = [Action OnPasswordRepeatChanged($source)]" />
 
                 <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
                     <Button
                         x:Name="ButtonRegister"
                         Width="205"
                         Height="20"
+                        cal:Message.Attach="ButtonRegister"
                         Background="Transparent">
                         Register
                     </Button>

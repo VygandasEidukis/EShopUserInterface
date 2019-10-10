@@ -49,5 +49,21 @@ namespace ApiHelperLibrary.Processors
                 throw new Exception("Unexpected error in UserProcessor");
             }
         }
+
+        public static async Task<bool> RegisterUser(UserModel user)
+        {
+            using (HttpResponseMessage response = await ApiHelper.apiClient.PostAsJsonAsync<UserModel>(LinkRegisterUser(), user))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    var userJson = await response.Content.ReadAsStringAsync();
+                    int? valid = JsonConvert.DeserializeObject<int>(userJson);
+                    if (valid == null)
+                        return false;
+                    return  valid == 1;
+                }
+                throw new Exception("Unexpected error in UserProcessor");
+            }
+        }
     }
 }
