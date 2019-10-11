@@ -40,18 +40,15 @@
                     <TextBox
                         x:Name="TextBoxUsername"
                         Width="205"
-                        Height="20"
                         Text="{Binding TextBoxUsername, Mode=TwoWay}" />
                     <TextBlock Text="Password" />
                     <PasswordBox
                         x:Name="TextBoxPassword"
                         Width="205"
-                        Height="20"
                         cal:Message.Attach="[Event PasswordChanged] = [Action OnPasswordChanged($source)]" />
                     <Button
                         x:Name="ButtonLogIn"
                         Width="205"
-                        Height="20"
                         Margin="0,20,0,0"
                         cal:Message.Attach="ButtonLogIn"
                         Background="Transparent"

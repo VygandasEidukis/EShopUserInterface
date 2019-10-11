@@ -9,11 +9,18 @@
                 <ResourceDictionary>
                     <local:Bootstrapper x:Key="bootstrapper" />
                 </ResourceDictionary>
+
+                <!--  Material design dependencies  -->
+
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+
             </ResourceDictionary.MergedDictionaries>
 
-            <!--
-                Main colors
-            -->
+
+            <!--  Main colors  -->
             <Color x:Key="BlackTextColor">#000000</Color>
             <Color x:Key="InnerWindowBackgroundColor">#efc9af</Color>
             <Color x:Key="BackgroundColorr">#ffffff</Color>
@@ -26,11 +33,8 @@
                 Opacity=".7"
                 Color="{StaticResource ExtraColorBackgroundColor}" />
 
-            <!--
-                STYLES
-                
-                UI Menu button
-            -->
+            <!--  STYLES  -->
+            <!--  UI button  -->
             <Style x:Key="UIButtonStyle" TargetType="Button">
                 <Setter Property="Background" Value="Transparent" />
                 <Setter Property="BorderThickness" Value="0" />

@@ -47,6 +47,12 @@
     <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
     </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.2.0.325, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.2.0\lib\net45\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.6.0.325, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.6.0\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -74,24 +80,24 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModels\LogInViewModel.cs" />
+    <Compile Include="ViewModels\PreLogIn\LogInViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\PostLogInViewModel.cs" />
-    <Compile Include="ViewModels\PreLogInViewModel.cs" />
-    <Compile Include="ViewModels\RegisterViewModel.cs" />
-    <Compile Include="Views\LogInView.xaml.cs">
+    <Compile Include="ViewModels\PostLogIn\PostLogInViewModel.cs" />
+    <Compile Include="ViewModels\PreLogIn\PreLogInViewModel.cs" />
+    <Compile Include="ViewModels\PreLogIn\RegisterViewModel.cs" />
+    <Compile Include="Views\PreLogIn\LogInView.xaml.cs">
       <DependentUpon>LogInView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PostLogInView.xaml.cs">
+    <Compile Include="Views\PostLogIn\PostLogInView.xaml.cs">
       <DependentUpon>PostLogInView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PreLogInView.xaml.cs">
+    <Compile Include="Views\PreLogIn\PreLogInView.xaml.cs">
       <DependentUpon>PreLogInView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RegisterView.xaml.cs">
+    <Compile Include="Views\PreLogIn\RegisterView.xaml.cs">
       <DependentUpon>RegisterView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -132,7 +138,7 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\LogInView.xaml">
+    <Page Include="Views\PreLogIn\LogInView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -140,15 +146,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PostLogInView.xaml">
+    <Page Include="Views\PostLogIn\PostLogInView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PreLogInView.xaml">
+    <Page Include="Views\PreLogIn\PreLogInView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RegisterView.xaml">
+    <Page Include="Views\PreLogIn\RegisterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
