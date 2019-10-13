@@ -1,6 +1,7 @@
 ﻿using ApiHelperLibrary.Models;
 using ApiHelperLibrary.Processors;
 using Caliburn.Micro;
+using EShopUI.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,40 +47,32 @@ namespace EShopUI.ViewModels
                 if (PasswordRepeat != User.Password)
                 {
                     if (sendNotifyCall != null)
-                        sendNotifyCall.Invoke("Password error", "Passwords don't match, please make sure both passwords are the same");
+                        sendNotifyCall.Invoke("Password error", Resources.ResourceManager.GetString("PasswordsDontMatch"));
                 }
                 else
                 {
                     LoadLoadingScreen();
-                    if (await UserProcessor.RegisterUser(User).ContinueWith(
-                        (task) => 
-                        {
-                            UnloadLoadingScreen();
-                            try {
-                                return task.Result;
-                            }catch
-                            {
-                                return false;
-                            }
-                        }))
+                    if (await UserProcessor.RegisterUser(User).ConfigureAwait(true))
                     {
                         //succssesfull registration   await UserProcessor.RegisterUser(User);
                         if (sendNotifyCall != null)
-                            sendNotifyCall.Invoke("Registered", "Succssesfully registered");
+                            sendNotifyCall.Invoke("Registered", Resources.ResourceManager.GetString("RegistrationSuccssesful"));
                     }
                     else
                     {
                         //failed registration
                         if (sendNotifyCall != null)
-                            sendNotifyCall.Invoke("Failed", "failed to register");
+                            sendNotifyCall.Invoke("Failed", Resources.ResourceManager.GetString("RegistrationFailed"));
                     }
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 if (sendNotifyCall != null)
                     sendNotifyCall.Invoke("Internal error", ex.Message);
+                throw new Exception(ex.Message);
             }
-            
+
         }
 
         public void OnPasswordChanged(PasswordBox source)

@@ -61,12 +61,57 @@ namespace EShopUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bad username and/or password.
+        /// </summary>
+        internal static string BadLogin {
+            get {
+                return ResourceManager.GetString("BadLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap DefaultUser {
             get {
                 object obj = ResourceManager.GetObject("DefaultUser", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Network connection error.
+        /// </summary>
+        internal static string NetworkError {
+            get {
+                return ResourceManager.GetString("NetworkError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passwords don&apos;t match, please make sure both passwords are the same.
+        /// </summary>
+        internal static string PasswordsDontMatch {
+            get {
+                return ResourceManager.GetString("PasswordsDontMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration failed, make sure inputs are correct .
+        /// </summary>
+        internal static string RegistrationFailed {
+            get {
+                return ResourceManager.GetString("RegistrationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Succsessfully registered..
+        /// </summary>
+        internal static string RegistrationSuccssesful {
+            get {
+                return ResourceManager.GetString("RegistrationSuccssesful", resourceCulture);
             }
         }
     }

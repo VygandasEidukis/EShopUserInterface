@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace EShopUI.ViewModels
 {
-    class PostLogInViewModel : Screen
+    class PostLogInViewModel : Conductor<object>
     {
         public PostLogInViewModel(UserModel user)
         {
-            
+            ActivateItem(new UserViewModel(user));
         }
     }
 }

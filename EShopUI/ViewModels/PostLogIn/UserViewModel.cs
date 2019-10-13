@@ -1,4 +1,5 @@
-﻿using Caliburn.Micro;
+﻿using ApiHelperLibrary.Models;
+using Caliburn.Micro;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,9 @@ namespace EShopUI.ViewModels
 {
     class UserViewModel : Screen
     {
+        public UserViewModel(UserModel user)
+        {
+
+        }
     }
 }

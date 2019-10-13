@@ -36,12 +36,16 @@ namespace EShopUI.Views
 
         private void ButtonNotificationOk_Click(object sender, RoutedEventArgs e)
         {
-            NotificationWindow.Visibility = Visibility.Collapsed;
+            Dispatcher.Invoke(() => {
+                NotificationWindow.Visibility = Visibility.Collapsed;
+            });
         }
 
         private void PopUpNotify()
         {
-            NotificationWindow.Visibility = Visibility.Visible;
+            Dispatcher.Invoke(()=> {
+                NotificationWindow.Visibility = Visibility.Visible;
+            });
         }
 
         

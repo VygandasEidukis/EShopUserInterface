@@ -9,5 +9,6 @@ namespace EShopUI.ViewModels.PostLogIn
 {
     class HomeViewModel : Screen
     {
+
     }
 }

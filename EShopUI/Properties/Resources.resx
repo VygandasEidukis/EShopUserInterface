@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BadLogin" xml:space="preserve">
+    <value>Bad username and/or password</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="DefaultUser" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Images\DefaultUser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NetworkError" xml:space="preserve">
+    <value>Network connection error</value>
+  </data>
+  <data name="PasswordsDontMatch" xml:space="preserve">
+    <value>Passwords don't match, please make sure both passwords are the same</value>
+  </data>
+  <data name="RegistrationFailed" xml:space="preserve">
+    <value>Registration failed, make sure inputs are correct </value>
+  </data>
+  <data name="RegistrationSuccssesful" xml:space="preserve">
+    <value>Succsessfully registered.</value>
   </data>
 </root>

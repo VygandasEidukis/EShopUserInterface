@@ -3,12 +3,12 @@ using System.Threading;
 
 namespace EShopUI.ViewModels
 {
-    class MainViewModel : Conductor<object>
+    public class MainViewModel : Conductor<object>
     {
         public delegate void LoadLoadingScreen();
-        public LoadLoadingScreen loadLoadingScreen;
+        public LoadLoadingScreen loadLoadingScreen { get; set; }
         public delegate void UnloadLoadingScreen();
-        public UnloadLoadingScreen unloadLoadingScreen;
+        public UnloadLoadingScreen unloadLoadingScreen { get; set; }
 
         public MainViewModel()
         {

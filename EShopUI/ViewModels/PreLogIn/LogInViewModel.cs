@@ -1,9 +1,11 @@
 ﻿using ApiHelperLibrary.Models;
 using ApiHelperLibrary.Processors;
 using Caliburn.Micro;
+using EShopUI.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
@@ -14,7 +16,7 @@ namespace EShopUI.ViewModels
     {
         #region props
         public delegate void SendNotifyCall(string title, string text);
-        public SendNotifyCall sendNotifyCall;
+        public SendNotifyCall sendNotifyCall { get; set; }
 
         private string _TextBoxUsername;
         public string TextBoxUsername
@@ -47,42 +49,44 @@ namespace EShopUI.ViewModels
         #region events
         public async void ButtonLogIn()
         {
-            //try
+            LoadLoadingScreen();
+            UserModel user = await LogInUser(TextBoxUsername, TextBoxPassword).ConfigureAwait(true);
+            if (user == null)
             {
-                LoadLoadingScreen();
-                UserModel user = await UserProcessor.LogInUser(new UserModel() { Username = TextBoxUsername, Password = TextBoxPassword }).ContinueWith(
-                    (task)=>
-                    {
-                        UnloadLoadingScreen();
-                        try
-                        {
-                            return task.Result;
-                        }catch
-                        {
-                            return null;
-                        }
-                    });
-
-                if (user == null)
-                {
-                    CallNotification("Failed to login", "Invalid username or password");
-                }
-                else
-                {
-                    CallNotification("Logged in as", $"{user.FirstName}  {user.LastName}");
-                    ((Parent as PreLogInViewModel).Parent as MainViewModel).ActiveItem = new PostLogInViewModel(user);
-                }
+                CallNotification("Failed to login", Resources.ResourceManager.GetString("BadLogin"));
             }
-            //catch(Exception ex)
+            else
             {
-                //CallNotification("Internal exception", ex.Message);
+                CallNotification("Logged in as", $"{user.FirstName}  {user.LastName}");
+                ((Parent as PreLogInViewModel).Parent as MainViewModel).ActiveItem = new PostLogInViewModel(user);
+            }
+        }
+
+        private async Task<UserModel> LogInUser(string username, string password)
+        {
+            try
+            {
+                UserModel LoginDetails = new UserModel();
+                LoginDetails.Username = username;
+                LoginDetails.Password = password;
+                var user = await UserProcessor.LogInUser(LoginDetails).ConfigureAwait(true);
+                UnloadLoadingScreen();
+                return user;
+            }
+            catch
+            {
+                UnloadLoadingScreen();
+                //TODO: remove this return null on release
+                return null;
+                throw new Exception(Resources.ResourceManager.GetString("NetworkError"));
             }
             
         }
 
         public void OnPasswordChanged(PasswordBox source)
         {
-            TextBoxPassword = source.Password;
+            if(source != null)
+                TextBoxPassword = source.Password;
         }
         #endregion
 
