@@ -16,12 +16,14 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="53" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <Grid
             x:Name="Toptab"
-            Height="40"
+            Grid.Row="0"
+            Height="53"
             VerticalAlignment="Top"
             Background="{StaticResource MenuTabColor}">
             <Button
@@ -38,9 +40,10 @@
                     VerticalAlignment="Center"
                     Kind="PlusBox" />
             </Button>
+            <Separator Margin="0,0,0,0" VerticalAlignment="Bottom" />
         </Grid>
 
-        <ScrollViewer Margin="0,40,0,0">
+        <ScrollViewer Grid.Row="1">
             <StackPanel>
                 <ItemsControl x:Name="UserProducts" ItemsSource="{Binding User.Products, Mode=TwoWay}">
                     <ItemsControl.ItemTemplate>

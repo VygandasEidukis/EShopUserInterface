@@ -10,14 +10,17 @@ namespace ApiHelperLibrary.Models
 {
     public class ImageModel
     {
-        private string imageLink { get; set; } = "http://localhost:8080/Resources/Images/";
+        private string imageLink { get; set; } 
         public int Id { get; set; }
-        public string ImagePath { get; set; }
-        public int ProductID { get; set; }
+        private string _ImagePath;
 
-        public async Task<bool> FetchImage()
+        public string ImagePath
         {
-            return true;
+            get { return "http://localhost:8080/Resources/Images/" + _ImagePath; }
+            set { 
+                _ImagePath = value; 
+            }
         }
+        public int ProductID { get; set; }
     }
 }
