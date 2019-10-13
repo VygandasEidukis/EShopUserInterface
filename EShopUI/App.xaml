@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:EShopUI">
     <Application.Resources>
+
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
@@ -53,8 +54,6 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
-
-
         </ResourceDictionary>
     </Application.Resources>
 </Application>

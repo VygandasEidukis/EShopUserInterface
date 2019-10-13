@@ -10,24 +10,21 @@
     d:DesignWidth="800"
     Background="{StaticResource BackgroundColor}"
     mc:Ignorable="d">
+
     <Grid>
-        <materialDesign:PopupBox
-            Width="40"
-            Height="40"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Top"
-            PlacementMode="BottomAndAlignLeftEdges">
-            <StackPanel Width="100">
-                <Button Content="Account" />
-                <Separator />
-                <Button Content="Log out" />
-            </StackPanel>
-        </materialDesign:PopupBox>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+
         <Grid
             x:Name="SideMenu"
+            Grid.Column="0"
             HorizontalAlignment="Left"
             Background="{StaticResource MenuTabColor}">
             <StackPanel Orientation="Vertical">
+
                 <Button
                     Height="50"
                     Background="{x:Null}"
@@ -68,26 +65,34 @@
                         Kind="Search" />
                 </Button>
             </StackPanel>
-            <StackPanel HorizontalAlignment="Left"
-                    VerticalAlignment="Bottom">
-                <Separator VerticalAlignment="Bottom"/>
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                <Separator VerticalAlignment="Bottom" />
                 <Button
-                Height="50"
-                VerticalAlignment="Bottom"
-                Background="{x:Null}"
-                BorderBrush="{x:Null}">
+                    Height="50"
+                    VerticalAlignment="Bottom"
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}">
                     <materialDesign:PackIcon
-                    Width="30"
-                    Height="30"
-                    
-                    Foreground="White"
-                    Kind="Logout" />
+                        Width="30"
+                        Height="30"
+                        Foreground="White"
+                        Kind="Logout" />
                 </Button>
             </StackPanel>
-            
         </Grid>
-
-
-
+        <ContentControl Grid.Column="1" />
+        <materialDesign:PopupBox
+            Grid.Column="1"
+            Width="40"
+            Height="40"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            PlacementMode="BottomAndAlignLeftEdges">
+            <StackPanel Width="100">
+                <Button Content="Account" />
+                <Separator />
+                <Button Content="Log out" />
+            </StackPanel>
+        </materialDesign:PopupBox>
     </Grid>
 </UserControl>

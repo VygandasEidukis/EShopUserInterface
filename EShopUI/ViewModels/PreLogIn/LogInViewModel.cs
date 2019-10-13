@@ -47,7 +47,7 @@ namespace EShopUI.ViewModels
         #region events
         public async void ButtonLogIn()
         {
-            try
+            //try
             {
                 LoadLoadingScreen();
                 UserModel user = await UserProcessor.LogInUser(new UserModel() { Username = TextBoxUsername, Password = TextBoxPassword }).ContinueWith(
@@ -62,18 +62,20 @@ namespace EShopUI.ViewModels
                             return null;
                         }
                     });
+
                 if (user == null)
                 {
                     CallNotification("Failed to login", "Invalid username or password");
                 }
                 else
                 {
-                    CallNotification("Logged in", $"{user.FirstName}  {user.LastName}");
-                    //TODO: should redirect to front page
+                    CallNotification("Logged in as", $"{user.FirstName}  {user.LastName}");
+                    ((Parent as PreLogInViewModel).Parent as MainViewModel).ActiveItem = new PostLogInViewModel(user);
                 }
-            }catch(Exception ex)
+            }
+            //catch(Exception ex)
             {
-                CallNotification("Internal exception", ex.Message);
+                //CallNotification("Internal exception", ex.Message);
             }
             
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,6 @@ namespace ApiHelperLibrary.Models
         public string Password { get; set; }
         public string Email { get; set; }
         public string Username { get; set; }
-        public byte[] Icon { get; set; }
+        public string IconPath { get; set; }
     }
 }
