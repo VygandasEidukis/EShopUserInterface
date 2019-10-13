@@ -16,5 +16,6 @@ namespace ApiHelperLibrary.Models
         public string Email { get; set; }
         public string Username { get; set; }
         public string IconPath { get; set; }
+        public List<ProductModel> Products { get; set; }
     }
 }

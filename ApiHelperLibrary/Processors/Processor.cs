@@ -28,5 +28,15 @@ namespace ApiHelperLibrary.Processors
         {
             return ApiPageLink + @"User";
         }
+
+        public static string LinkGetProductsOfUser(int id)
+        {
+            return ApiPageLink + $"Product/User/{id}";
+        }
+
+        public static string LinkGetProductImagesByProductID(int id)
+        {
+            return ApiPageLink + $"Image/{id}";
+        }
     }
 }

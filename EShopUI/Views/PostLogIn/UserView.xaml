@@ -8,6 +8,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="450"
     d:DesignWidth="800"
+    SnapsToDevicePixels="True"
+    UseLayoutRounding="True"
     mc:Ignorable="d">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -21,23 +23,61 @@
             x:Name="Toptab"
             Height="40"
             VerticalAlignment="Top"
-            Background="red">
+            Background="{StaticResource MenuTabColor}">
             <Button
                 Width="60"
                 Height="40"
                 HorizontalAlignment="Left"
                 Background="{x:Null}"
                 BorderBrush="{x:Null}"
-                BorderThickness="0"
-                Style="{StaticResource UIButtonStyle}">
+                BorderThickness="0">
                 <materialDesign:PackIcon
                     Width="30"
                     Height="30"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Kind="Plus" />
+                    Kind="PlusBox" />
             </Button>
         </Grid>
-        <Grid />
+
+        <ScrollViewer Margin="0,40,0,0">
+            <StackPanel>
+                <ItemsControl x:Name="UserProducts" ItemsSource="{Binding User.Products, Mode=TwoWay}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Width="300" Height="300">
+                                <StackPanel Width="300" Height="300">
+                                    <Border
+                                        x:Name="CurrentImage"
+                                        Width="200"
+                                        Height="200"
+                                        Margin="0,5,0,0"
+                                        VerticalAlignment="Top"
+                                        CornerRadius="10">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1" />
+                                        </Border.Effect>
+                                        <Image RenderOptions.BitmapScalingMode="Fant" Source="{Binding CurrentImage, Mode=TwoWay}" />
+
+                                    </Border>
+
+                                    <TextBlock HorizontalAlignment="Center" Text="{Binding Name, Mode=TwoWay}" />
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Bottom"
+                                        Text="{Binding Price, Mode=TwoWay}" />
+                                </StackPanel>
+                            </Border>
+
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </UserControl>
