@@ -10,17 +10,27 @@
     Background="{StaticResource BackgroundColor}"
     mc:Ignorable="d">
     <Grid>
-
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="605" Height="350" Background="{StaticResource MenuTabColor}" HorizontalAlignment="Center" >
+        <StackPanel
+            Width="605"
+            Height="350"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="{StaticResource MenuTabColor}"
+            Orientation="Horizontal">
             <StackPanel Width="300" VerticalAlignment="Center">
-                <TextBlock Text="Image" HorizontalAlignment="Center" />
+                <TextBlock HorizontalAlignment="Center" Text="Image" />
                 <Border
                     Margin="5"
-                    BorderBrush="{StaticResource  BackgroundColor}"
+                    BorderBrush="{StaticResource BackgroundColor}"
                     BorderThickness="5">
-                    <Image Height="250" />
+                    <Image
+                        x:Name="ImageDisplay"
+                        Height="250"
+                        RenderOptions.BitmapScalingMode="Fant"
+                        Source="{Binding ImageDisplayPath, Mode=TwoWay}" />
                 </Border>
                 <Button
+                    x:Name="BrowseButton"
                     Width="100"
                     Background="{StaticResource MenuTabColor}"
                     BorderBrush="{x:Null}"
@@ -32,12 +42,23 @@
                 MaxHeight="300"
                 VerticalAlignment="Center">
                 <TextBlock Text="Product title" />
-                <TextBox />
+                <TextBox x:Name="TextProductName" Text="{Binding Product.Name, Mode=TwoWay}" />
                 <TextBlock Text="Price" />
-                <TextBox />
+                <TextBox
+                    x:Name="TextProductPrice"
+                    PreviewTextInput="TextBox_PreviewTextInput"
+                    Text="{Binding Product.Price, Mode=TwoWay}" />
                 <TextBlock Text="Description" />
-                <RichTextBox MaxHeight="150" />
+                <TextBox
+                    x:Name="TextProductDescription"
+                    MaxHeight="150"
+                    AcceptsReturn="True"
+                    HorizontalScrollBarVisibility="Disabled"
+                    Text="{Binding Product.Description, Mode=TwoWay}"
+                    TextWrapping="Wrap"
+                    VerticalScrollBarVisibility="Auto" />
                 <Button
+                    x:Name="SubmitButton"
                     Margin="20"
                     Background="{StaticResource MenuTabColor}"
                     BorderBrush="{x:Null}"
