@@ -64,6 +64,7 @@ namespace EShopUI.ViewModels
                         if (sendNotifyCall != null)
                             sendNotifyCall.Invoke("Failed", Resources.ResourceManager.GetString("RegistrationFailed"));
                     }
+                    UnloadLoadingScreen();
                 }
             }
             catch (Exception ex)
@@ -72,7 +73,6 @@ namespace EShopUI.ViewModels
                     sendNotifyCall.Invoke("Internal error", ex.Message);
                 throw new Exception(ex.Message);
             }
-
         }
 
         public void OnPasswordChanged(PasswordBox source)

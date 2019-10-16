@@ -11,6 +11,9 @@ namespace EShopUI.ViewModels
 {
     class UserViewModel : Screen
     {
+        public delegate void LoadView(object view);
+        public LoadView LoadNewView { get; set; }
+
         private UserModel _User;
 
         public UserModel User
@@ -26,7 +29,6 @@ namespace EShopUI.ViewModels
         public UserViewModel(UserModel user)
         {
             User = user;
-            //Important
             FetchProducts();
         }
 
@@ -41,6 +43,12 @@ namespace EShopUI.ViewModels
             {
                 User.Products[i].ProductImages = await ImageProcessor.GetImagesByProductId(User.Products[i].Id).ConfigureAwait(true);
             }
+        }
+
+        public void AddProductButton()
+        {
+            if (LoadNewView != null)
+                LoadNewView.Invoke(new CreateProductViewModel());
         }
     }
 }

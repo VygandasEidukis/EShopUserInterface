@@ -88,6 +88,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModels\PostLogIn\CreateProductViewModel.cs" />
     <Compile Include="ViewModels\PostLogIn\HomeViewModel.cs" />
     <Compile Include="ViewModels\PostLogIn\SearchViewModel.cs" />
     <Compile Include="ViewModels\PostLogIn\UserViewModel.cs" />
@@ -96,6 +97,9 @@
     <Compile Include="ViewModels\PostLogIn\PostLogInViewModel.cs" />
     <Compile Include="ViewModels\PreLogIn\PreLogInViewModel.cs" />
     <Compile Include="ViewModels\PreLogIn\RegisterViewModel.cs" />
+    <Compile Include="Views\PostLogIn\CreateProductView.xaml.cs">
+      <DependentUpon>CreateProductView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PostLogIn\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
@@ -160,6 +164,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\PostLogIn\CreateProductView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PostLogIn\HomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

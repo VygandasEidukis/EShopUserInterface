@@ -20,7 +20,8 @@ namespace ApiHelperLibrary.Models
         {
             get { return _ProductImages; }
             set { _ProductImages = value;
-                CurrentImage = _ProductImages[0].ImagePath;
+                if (_ProductImages.Count > 0)
+                    CurrentImage = _ProductImages[0].ImagePath;
             }
         }
 

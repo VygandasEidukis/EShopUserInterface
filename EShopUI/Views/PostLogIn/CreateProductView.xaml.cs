@@ -1,5 +1,4 @@
-﻿using ApiHelperLibrary.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,18 +16,13 @@ using System.Windows.Shapes;
 namespace EShopUI.Views
 {
     /// <summary>
-    /// Interaction logic for PostLogInView.xaml
+    /// Interaction logic for CreateProduct.xaml
     /// </summary>
-    public partial class PostLogInView : UserControl
+    public partial class CreateProductView : UserControl
     {
-        public PostLogInView()
+        public CreateProductView()
         {
             InitializeComponent();
-        }
-
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

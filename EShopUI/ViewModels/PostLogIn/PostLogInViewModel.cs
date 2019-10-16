@@ -14,5 +14,21 @@ namespace EShopUI.ViewModels
         {
             ActivateItem(new UserViewModel(user));
         }
+    
+        public void ViewLoaded()
+        {
+            (ActiveItem as UserViewModel).LoadNewView += LoadNewView;
+        }
+
+        public void LoadNewView(object view)
+        {
+            try
+            {
+                ActivateItem(view);
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
