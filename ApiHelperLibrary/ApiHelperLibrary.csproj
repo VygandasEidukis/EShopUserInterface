@@ -49,9 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiHelper.cs" />
-    <Compile Include="Models\async.cs" />
     <Compile Include="Models\ImageModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\SingleImageModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Processors\ImageProcessor.cs" />
     <Compile Include="Processors\Processor.cs" />

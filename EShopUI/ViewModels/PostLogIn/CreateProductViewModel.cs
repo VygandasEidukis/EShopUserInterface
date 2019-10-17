@@ -1,4 +1,5 @@
 ﻿using ApiHelperLibrary.Models;
+using ApiHelperLibrary.Processors;
 using Caliburn.Micro;
 using Microsoft.Win32;
 using System;
@@ -49,6 +50,11 @@ namespace EShopUI.ViewModels
             Product = new ProductModel();
         }
 
+        public void ViewLoaded()
+        {
+            Product.UserID = (Parent as PostLogInViewModel).User.Id;
+        }
+
         #region Events
         public void BrowseButton()
         {
@@ -63,9 +69,28 @@ namespace EShopUI.ViewModels
             }
         }
 
-        public void SubmitButton()
+        public async void SubmitButton()
         {
-            //submits product
+            if(VerifyFields())
+            {
+                //save Product info
+                int ProductID = await ProductProcessor.CreateProduct(Product).ConfigureAwait(false);
+                //save Product Images
+                await ImageProcessor.SaveImage(ImageDisplayPath, ProductID).ConfigureAwait(false);
+
+                (Parent as PostLogInViewModel).ActiveItem = new UserViewModel((Parent as PostLogInViewModel).User);
+            }
+        }
+
+        private bool VerifyFields()
+        {
+            if (Product.Name.Length < 3)
+                return false;
+            if (Product.Price == 0)
+                return false;
+            if (Product.Description.Length < 5)
+                return false;
+            return true;
         }
 
         #endregion

@@ -10,8 +10,10 @@ namespace EShopUI.ViewModels
 {
     class PostLogInViewModel : Conductor<object>
     {
+        public UserModel User { get; set; }
         public PostLogInViewModel(UserModel user)
         {
+            User = user;
             ActivateItem(new UserViewModel(user));
         }
     

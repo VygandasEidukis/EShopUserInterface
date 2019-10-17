@@ -38,5 +38,15 @@ namespace ApiHelperLibrary.Processors
         {
             return ApiPageLink + $"Image/{id}";
         }
+
+        public static string LinkCreateNewProduct()
+        {
+            return ApiPageLink + "Product";
+        }
+
+        public static string LinkUploadImage(int ProductID)
+        {
+            return ApiPageLink + $"Image/{ProductID}";
+        }
     }
 }
