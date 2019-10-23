@@ -8,7 +8,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    Background="White"
     mc:Ignorable="d">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -41,5 +40,53 @@
                 Foreground="Black" />
         </StackPanel>
 
+        <ScrollViewer Grid.Row="2" Grid.Column="1">
+            <StackPanel>
+                <ItemsControl
+                    x:Name="Users"
+                    HorizontalAlignment="Center"
+                    ItemsSource="{Binding Users, Mode=TwoWay}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                Width="250"
+                                Height="250"
+                                Margin="5"
+                                Background="{StaticResource MenuTabColor}">
+                                <StackPanel
+                                    Width="300"
+                                    Height="300"
+                                    HorizontalAlignment="Center">
+                                    <Border
+                                        x:Name="CurrentImage"
+                                        Width="200"
+                                        Height="200"
+                                        Margin="0,5,0,0"
+                                        VerticalAlignment="Top"
+                                        CornerRadius="10">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1" />
+                                        </Border.Effect>
+                                        <Image RenderOptions.BitmapScalingMode="Fant" Source="{Binding IconPath, Mode=TwoWay}" />
+
+                                    </Border>
+
+                                    <TextBlock
+                                        Margin="20"
+                                        HorizontalAlignment="Center"
+                                        Text="{Binding Username, Mode=TwoWay}" />
+                                </StackPanel>
+                            </Border>
+
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </UserControl>
