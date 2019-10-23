@@ -7,6 +7,7 @@
     xmlns:local="clr-namespace:EShopUI.Views"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    cal:Message.Attach="[Event Loaded]=[Action ViewLoaded()]"
     d:DesignHeight="450"
     d:DesignWidth="800"
     SnapsToDevicePixels="True"

@@ -56,6 +56,7 @@
     <Compile Include="Processors\ImageProcessor.cs" />
     <Compile Include="Processors\Processor.cs" />
     <Compile Include="Processors\ProductProcessor.cs" />
+    <Compile Include="Processors\SearchProcessor.cs" />
     <Compile Include="Processors\UserProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

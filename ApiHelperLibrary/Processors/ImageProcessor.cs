@@ -25,14 +25,22 @@ namespace ApiHelperLibrary.Processors
 
         public static async Task SaveImage(string ImagePath, int ProductID)
         {
-            using (HttpResponseMessage response = await ApiHelper.apiClient.PostAsJsonAsync<SingleImageModel>(LinkUploadImage(ProductID), new SingleImageModel() { Image = ImageModel.GetImageBytesFromDirectory(ImagePath), FileExtension = Path.GetExtension(ImagePath) }))
+            try
             {
-                if (response.IsSuccessStatusCode)
+                using (HttpResponseMessage response = await ApiHelper.apiClient.PostAsJsonAsync<SingleImageModel>(LinkUploadImage(ProductID), new SingleImageModel() { Image = ImageModel.GetImageBytesFromDirectory(ImagePath), FileExtension = Path.GetExtension(ImagePath) }))
                 {
-                    return;
+                    response.EnsureSuccessStatusCode();
+                    if (response.IsSuccessStatusCode)
+                    {
+
+                        return;
+                    }
                 }
-                throw new Exception($"Unexpected error in ImageProcessor \nResponse code: {response.StatusCode}");
+            }catch(Exception ex)
+            {
+                throw new Exception($"Unexpected error in ImageProcessor \nException code: {ex.Message}");
             }
+
         }
     }
 }

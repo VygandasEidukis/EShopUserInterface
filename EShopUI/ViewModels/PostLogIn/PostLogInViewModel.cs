@@ -16,10 +16,17 @@ namespace EShopUI.ViewModels
             User = user;
             ActivateItem(new UserViewModel(user));
         }
-    
+
+        public void SeachButton()
+        {
+            ActivateItem(new SearchViewModel());
+        }
+
+
         public void ViewLoaded()
         {
-            (ActiveItem as UserViewModel).LoadNewView += LoadNewView;
+            if ((ActiveItem as UserViewModel) != null)
+                (ActiveItem as UserViewModel).LoadNewView += LoadNewView;
         }
 
         public void LoadNewView(object view)

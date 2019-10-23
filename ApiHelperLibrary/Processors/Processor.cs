@@ -48,5 +48,9 @@ namespace ApiHelperLibrary.Processors
         {
             return ApiPageLink + $"Image/{ProductID}";
         }
+        public static string LinkSearchByUsername(string username)
+        {
+            return ApiPageLink + $"search/username/{username}";
+        }
     }
 }

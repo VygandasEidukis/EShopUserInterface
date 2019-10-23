@@ -59,6 +59,7 @@
                 </Button>
                 <Button
                     Height="50"
+                    cal:Message.Attach="[Event Click] = [Action SeachButton]"
                     Background="{x:Null}"
                     BorderBrush="{x:Null}">
                     <materialDesign:PackIcon

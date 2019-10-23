@@ -32,10 +32,15 @@ namespace EShopUI.ViewModels
             FetchProducts();
         }
 
+        public void ViewLoaded()
+        {
+            //set up delegates if view was re-called
+            (Parent as PostLogInViewModel).ViewLoaded();
+        }
+
         private async void FetchProducts()
         {
             User.Products = await ProductProcessor.GetProductsByUserID(User.Id).ConfigureAwait(true);
-            FetchProductImages();
         }
         private async void FetchProductImages()
         {

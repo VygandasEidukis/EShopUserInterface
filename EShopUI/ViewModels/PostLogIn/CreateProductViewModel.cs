@@ -15,6 +15,9 @@ namespace EShopUI.ViewModels
     public class CreateProductViewModel : Screen
     {
         #region props
+        public delegate void LoadView(object view);
+        public LoadView LoadNewView { get; set; }
+
         private ProductModel _Product;
 
         public ProductModel Product
@@ -77,7 +80,6 @@ namespace EShopUI.ViewModels
                 int ProductID = await ProductProcessor.CreateProduct(Product).ConfigureAwait(false);
                 //save Product Images
                 await ImageProcessor.SaveImage(ImageDisplayPath, ProductID).ConfigureAwait(false);
-
                 (Parent as PostLogInViewModel).ActiveItem = new UserViewModel((Parent as PostLogInViewModel).User);
             }
         }
