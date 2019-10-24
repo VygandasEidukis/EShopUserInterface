@@ -1,4 +1,5 @@
-﻿using Caliburn.Micro;
+﻿using ApiHelperLibrary.Models;
+using Caliburn.Micro;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,21 @@ namespace EShopUI.ViewModels.PostLogIn
 {
     class VisitUserViewModel : Screen
     {
-        public VisitUserViewModel(UserViewModel user)
-        {
+        private UserModel _User;
 
+        public UserModel User
+        {
+            get { return _User; }
+            set 
+            {
+                _User = value;
+                NotifyOfPropertyChange(() => User);
+            }
+        }
+
+        public VisitUserViewModel(UserModel User)
+        {
+            this.User = User;
         }
     }
 }

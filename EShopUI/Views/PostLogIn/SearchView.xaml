@@ -52,6 +52,7 @@
                                 Width="250"
                                 Height="250"
                                 Margin="5"
+                                cal:Message.Attach="[Event MouseLeftButtonDown] = [Action LoadUserPage($source)]"
                                 Background="{StaticResource MenuTabColor}">
                                 <StackPanel
                                     Width="300"

@@ -1,6 +1,7 @@
 ﻿using ApiHelperLibrary.Models;
 using ApiHelperLibrary.Processors;
 using Caliburn.Micro;
+using EShopUI.ViewModels.PostLogIn;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,6 +47,15 @@ namespace EShopUI.ViewModels
 
         }
 
+        public void LoadUserPage(object selectedPage)
+        {
+            UserModel selectedUser = (selectedPage as System.Windows.Controls.Border).DataContext as UserModel;
+            if(selectedUser != null)
+            {
+                (Parent as PostLogInViewModel).LoadNewView(new VisitUserViewModel(selectedUser));
+            }
+        }
+
         public async void SearchButton()
         {
             if (searchText != null)
@@ -56,7 +66,7 @@ namespace EShopUI.ViewModels
                     Users = new BindableCollection<UserModel>();
                     for(int i = 0; i < userList.Count; i++)
                     {
-                        if (userList[i].Username != (Parent as PostLogInViewModel).User.Username)
+                        if (userList[i].Username != (Parent as PostLogInViewModel).User.Username || userList[i].FirstName.Length >0)
                         {
                             Users.Add(userList[i]);
                         }
