@@ -22,6 +22,7 @@ namespace EShopUI.ViewModels
             set { 
                 _User = value;
                 NotifyOfPropertyChange(() => User);
+                NotifyOfPropertyChange(() => User.Products);
             }
         }
 

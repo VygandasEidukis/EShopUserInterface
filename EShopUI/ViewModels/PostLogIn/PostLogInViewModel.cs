@@ -17,11 +17,20 @@ namespace EShopUI.ViewModels
             ActivateItem(new UserViewModel(user));
         }
 
-        public void SeachButton()
+        public void ButtonHome()
+        {
+            ActivateItem(new UserViewModel(User));
+        }
+
+        public void ButtonSearch()
         {
             ActivateItem(new SearchViewModel());
         }
 
+        public void ButtonLogOut()
+        {
+            ActivateItem(new PreLogInViewModel());
+        }
 
         public void ViewLoaded()
         {

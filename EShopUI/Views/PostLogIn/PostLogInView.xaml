@@ -45,6 +45,7 @@
                 </Button>
                 <Separator />
                 <Button
+                    x:Name="ButtonHome"
                     Height="50"
                     Background="{x:Null}"
                     BorderBrush="{x:Null}">
@@ -58,6 +59,7 @@
                         Kind="Account" />
                 </Button>
                 <Button
+                    x:Name="ButtonSearch"
                     Height="50"
                     cal:Message.Attach="[Event Click] = [Action SeachButton]"
                     Background="{x:Null}"
@@ -74,6 +76,7 @@
             <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom">
                 <Separator VerticalAlignment="Bottom" />
                 <Button
+                    x:Name="ButtonLogOut"
                     Height="50"
                     VerticalAlignment="Bottom"
                     Background="{x:Null}"
