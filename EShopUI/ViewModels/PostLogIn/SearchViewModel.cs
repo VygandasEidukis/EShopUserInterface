@@ -2,11 +2,6 @@
 using ApiHelperLibrary.Processors;
 using Caliburn.Micro;
 using EShopUI.ViewModels.PostLogIn;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EShopUI.ViewModels
 {

@@ -2,18 +2,18 @@
 using Caliburn.Micro;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EShopUI.ViewModels
 {
     class PostLogInViewModel : Conductor<object>
     {
         public UserModel User { get; set; }
+
+        public List<ProductModel> ShoppingCartProducts { get; set; }
         public PostLogInViewModel(UserModel user)
         {
             User = user;
+            ShoppingCartProducts = new List<ProductModel>();
             ActivateItem(new UserViewModel(user));
         }
 
@@ -29,7 +29,12 @@ namespace EShopUI.ViewModels
 
         public void ButtonLogOut()
         {
-            ActivateItem(new PreLogInViewModel());
+            (Parent as MainViewModel).ActivateItem(new PreLogInViewModel());
+        }
+
+        public void ButtonCart()
+        {
+            ActivateItem(new ShoppingCartViewModel(ShoppingCartProducts));
         }
 
         public void ViewLoaded()

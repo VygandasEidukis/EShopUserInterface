@@ -57,6 +57,8 @@ namespace EShopUI.ViewModels
                         //succssesfull registration   await UserProcessor.RegisterUser(User);
                         if (sendNotifyCall != null)
                             sendNotifyCall.Invoke("Registered", Resources.ResourceManager.GetString("RegistrationSuccssesful"));
+
+                        (Parent as MainViewModel).ActivateItem(new LogInViewModel());
                     }
                     else
                     {

@@ -61,7 +61,6 @@
                 <Button
                     x:Name="ButtonSearch"
                     Height="50"
-                    cal:Message.Attach="[Event Click] = [Action SeachButton]"
                     Background="{x:Null}"
                     BorderBrush="{x:Null}">
                     <materialDesign:PackIcon
@@ -71,6 +70,20 @@
                         VerticalAlignment="Top"
                         Foreground="White"
                         Kind="Search" />
+                </Button>
+
+                <Button
+                    x:Name="ButtonCart"
+                    Height="50"
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}">
+                    <materialDesign:PackIcon
+                        Width="30"
+                        Height="30"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Foreground="White"
+                        Kind="Cart" />
                 </Button>
             </StackPanel>
             <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom">

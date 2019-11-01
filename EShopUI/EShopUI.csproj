@@ -88,9 +88,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModels\PostLogIn\CreateProductViewModel.cs" />
+    <Compile Include="ViewModels\PostLogIn\Shop\CreateProductViewModel.cs" />
     <Compile Include="ViewModels\PostLogIn\HomeViewModel.cs" />
     <Compile Include="ViewModels\PostLogIn\SearchViewModel.cs" />
+    <Compile Include="ViewModels\PostLogIn\Shop\DetailedProductViewModel.cs" />
+    <Compile Include="ViewModels\PostLogIn\Shop\ShoppingCartViewModel.cs" />
     <Compile Include="ViewModels\PostLogIn\UserViewModel.cs" />
     <Compile Include="ViewModels\PostLogIn\VisitUserViewModel.cs" />
     <Compile Include="ViewModels\PreLogIn\LogInViewModel.cs" />
@@ -98,7 +100,7 @@
     <Compile Include="ViewModels\PostLogIn\PostLogInViewModel.cs" />
     <Compile Include="ViewModels\PreLogIn\PreLogInViewModel.cs" />
     <Compile Include="ViewModels\PreLogIn\RegisterViewModel.cs" />
-    <Compile Include="Views\PostLogIn\CreateProductView.xaml.cs">
+    <Compile Include="Views\PostLogIn\Shop\CreateProductView.xaml.cs">
       <DependentUpon>CreateProductView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PostLogIn\HomeView.xaml.cs">
@@ -106,6 +108,12 @@
     </Compile>
     <Compile Include="Views\PostLogIn\SearchView.xaml.cs">
       <DependentUpon>SearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PostLogIn\Shop\DetailedProductView.xaml.cs">
+      <DependentUpon>DetailedProductView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PostLogIn\Shop\ShoppingCartView.xaml.cs">
+      <DependentUpon>ShoppingCartView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PostLogIn\UserView.xaml.cs">
       <DependentUpon>UserView.xaml</DependentUpon>
@@ -168,7 +176,7 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\PostLogIn\CreateProductView.xaml">
+    <Page Include="Views\PostLogIn\Shop\CreateProductView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -177,6 +185,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PostLogIn\SearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PostLogIn\Shop\DetailedProductView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PostLogIn\Shop\ShoppingCartView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
