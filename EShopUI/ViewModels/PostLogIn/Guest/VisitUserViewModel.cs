@@ -21,5 +21,14 @@ namespace EShopUI.ViewModels.PostLogIn
         {
             this.User = User;
         }
+
+        public void ProductClicked(object obj)
+        {
+            ProductModel product = obj as ProductModel;
+            if(obj != null)
+            {
+
+            }
+        }
     }
 }

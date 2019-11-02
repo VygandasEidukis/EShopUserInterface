@@ -44,6 +44,7 @@ namespace EShopUI.ViewModels
         {
             try
             {
+                bool registrationStatus = false;
                 if (PasswordRepeat != User.Password)
                 {
                     if (sendNotifyCall != null)
@@ -54,11 +55,10 @@ namespace EShopUI.ViewModels
                     LoadLoadingScreen();
                     if (await UserProcessor.RegisterUser(User).ConfigureAwait(true))
                     {
-                        //succssesfull registration   await UserProcessor.RegisterUser(User);
+                        //succssesfull registration
                         if (sendNotifyCall != null)
                             sendNotifyCall.Invoke("Registered", Resources.ResourceManager.GetString("RegistrationSuccssesful"));
-
-                        (Parent as MainViewModel).ActivateItem(new LogInViewModel());
+                        registrationStatus = true;
                     }
                     else
                     {
@@ -67,6 +67,8 @@ namespace EShopUI.ViewModels
                             sendNotifyCall.Invoke("Failed", Resources.ResourceManager.GetString("RegistrationFailed"));
                     }
                     UnloadLoadingScreen();
+                    if(registrationStatus)
+                        (Parent as PreLogInViewModel).ActivateItem(new LogInViewModel());
                 }
             }
             catch (Exception ex)

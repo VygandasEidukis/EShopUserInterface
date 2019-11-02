@@ -18,7 +18,7 @@ namespace EShopUI.Views
     /// <summary>
     /// Interaction logic for DetailedProductView.xaml
     /// </summary>
-    public partial class DetailedProductView : Page
+    public partial class DetailedProductView : UserControl
     {
         public DetailedProductView()
         {
