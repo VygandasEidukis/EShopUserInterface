@@ -18,12 +18,16 @@ namespace ApiHelperLibrary.Models
         private List<ImageModel> _ProductImages;
         public List<ImageModel> ProductImages
         {
-            get { return _ProductImages; }
+            get => _ProductImages;
             set { _ProductImages = value;
                 if (_ProductImages.Count > 0)
                     CurrentImage = _ProductImages[0].ImagePath;
             }
         }
 
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

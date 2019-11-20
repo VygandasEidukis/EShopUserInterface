@@ -10,21 +10,46 @@ namespace EShopUI.ViewModels
 {
     class ShoppingCartViewModel : Screen
     {
-        private List<ProductModel> _Product;
+        private double _OverallPrice;
 
-        public List<ProductModel> Product
+        public double OverallPrice
         {
-            get => _Product;
+            get => _OverallPrice;
+            set { _OverallPrice = value; NotifyOfPropertyChange(()=>OverallPrice); }
+        }
+
+        private BindableCollection<ProductModel> _Products;
+
+        public BindableCollection<ProductModel> Products
+        {
+            get => _Products;
             set 
             { 
-                _Product = value;
-                NotifyOfPropertyChange(()=>Product);
+                _Products = value;
+                NotifyOfPropertyChange(()=>Products);
+                CalculatePrice();
             }
         }
 
         public ShoppingCartViewModel(List<ProductModel> Product)
         {
-            this.Product = Product;
+            Products = new BindableCollection<ProductModel>();
+            foreach (var productModel in Product)
+            {
+                Products.Add(productModel);
+            }
+        }
+
+        public void ProductClicked(object obj)
+        {
+            if (obj == null) return;
+            Products.Remove(obj as ProductModel);
+            CalculatePrice();
+        }
+
+        public void CalculatePrice()
+        {
+            OverallPrice = Products.Sum(product => product.Price);
         }
     }
 }
