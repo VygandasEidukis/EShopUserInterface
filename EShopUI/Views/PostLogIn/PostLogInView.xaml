@@ -103,18 +103,5 @@
             </StackPanel>
         </Grid>
         <ContentControl x:Name="ActiveItem" Grid.Column="1" />
-        <materialDesign:PopupBox
-            Grid.Column="1"
-            Width="40"
-            Height="40"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Top"
-            PlacementMode="BottomAndAlignLeftEdges">
-            <StackPanel Width="100">
-                <Button Content="Account" />
-                <Separator />
-                <Button Content="Log out" />
-            </StackPanel>
-        </materialDesign:PopupBox>
     </Grid>
 </UserControl>

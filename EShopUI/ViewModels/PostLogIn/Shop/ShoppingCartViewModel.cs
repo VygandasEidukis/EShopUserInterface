@@ -14,7 +14,7 @@ namespace EShopUI.ViewModels
 
         public List<ProductModel> Product
         {
-            get { return _Product; }
+            get => _Product;
             set 
             { 
                 _Product = value;

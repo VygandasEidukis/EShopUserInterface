@@ -30,7 +30,7 @@
             <SolidColorBrush x:Key="BackgroundColor" Color="{StaticResource ExtraColorBackgroundColor}" />
             <SolidColorBrush x:Key="MenuTabColor" Color="{StaticResource ExtraColorForegroundColor}" />
             <SolidColorBrush
-                x:Key="BackgroundTransperentBrush"
+                x:Key="BackgroundTransparentBrush"
                 Opacity=".7"
                 Color="{StaticResource ExtraColorBackgroundColor}" />
 

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EShopUI.Views.PostLogIn
+namespace EShopUI.Views
 {
     /// <summary>
     /// Interaction logic for VisitUserView.xaml

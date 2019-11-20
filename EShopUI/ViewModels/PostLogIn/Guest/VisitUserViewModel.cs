@@ -1,9 +1,9 @@
 ﻿using ApiHelperLibrary.Models;
 using Caliburn.Micro;
 
-namespace EShopUI.ViewModels.PostLogIn
+namespace EShopUI.ViewModels
 {
-    class VisitUserViewModel : Screen
+    class VisitUserViewModel : Conductor<object>
     {
         private UserModel _User;
 
@@ -27,7 +27,7 @@ namespace EShopUI.ViewModels.PostLogIn
             ProductModel product = obj as ProductModel;
             if(obj != null)
             {
-
+                ActivateItem(new DetailedProductViewModel(product));
             }
         }
     }

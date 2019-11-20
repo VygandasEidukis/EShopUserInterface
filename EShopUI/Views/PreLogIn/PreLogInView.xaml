@@ -59,7 +59,7 @@
             x:Name="NotificationWindow"
             Grid.RowSpan="4"
             Grid.ColumnSpan="3"
-            Background="{StaticResource BackgroundTransperentBrush}"
+            Background="{StaticResource BackgroundTransparentBrush}"
             Visibility="Collapsed">
             <Grid
                 Width="300"
@@ -74,7 +74,7 @@
                             <UserControl
                                 Height="40"
                                 VerticalAlignment="Top"
-                                Background="{StaticResource BackgroundTransperentBrush}">
+                                Background="{StaticResource BackgroundTransparentBrush}">
                                 <TextBlock
                                     x:Name="NotificationTitle"
                                     HorizontalAlignment="Center"

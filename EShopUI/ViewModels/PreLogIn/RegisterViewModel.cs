@@ -47,34 +47,30 @@ namespace EShopUI.ViewModels
                 bool registrationStatus = false;
                 if (PasswordRepeat != User.Password)
                 {
-                    if (sendNotifyCall != null)
-                        sendNotifyCall.Invoke("Password error", Resources.ResourceManager.GetString("PasswordsDontMatch"));
+                    sendNotifyCall?.Invoke("Password error", Resources.ResourceManager.GetString("PasswordsDontMatch"));
                 }
                 else
                 {
                     LoadLoadingScreen();
                     if (await UserProcessor.RegisterUser(User).ConfigureAwait(true))
                     {
-                        //succssesfull registration
-                        if (sendNotifyCall != null)
-                            sendNotifyCall.Invoke("Registered", Resources.ResourceManager.GetString("RegistrationSuccssesful"));
+                        //successful registration
+                        sendNotifyCall?.Invoke("Registered", Resources.ResourceManager.GetString("RegistrationSuccssesful"));
                         registrationStatus = true;
                     }
                     else
                     {
                         //failed registration
-                        if (sendNotifyCall != null)
-                            sendNotifyCall.Invoke("Failed", Resources.ResourceManager.GetString("RegistrationFailed"));
+                        sendNotifyCall?.Invoke("Failed", Resources.ResourceManager.GetString("RegistrationFailed"));
                     }
                     UnloadLoadingScreen();
                     if(registrationStatus)
-                        (Parent as PreLogInViewModel).ActivateItem(new LogInViewModel());
+                        (Parent as PreLogInViewModel)?.ActivateItem(new LogInViewModel());
                 }
             }
             catch (Exception ex)
             {
-                if (sendNotifyCall != null)
-                    sendNotifyCall.Invoke("Internal error", ex.Message);
+                sendNotifyCall?.Invoke("Internal error", ex.Message);
                 throw new Exception(ex.Message);
             }
         }
@@ -92,12 +88,12 @@ namespace EShopUI.ViewModels
 
         private void LoadLoadingScreen()
         {
-            ((this.Parent as PreLogInViewModel).Parent as MainViewModel).loadLoadingScreen.Invoke();
+            ((this.Parent as PreLogInViewModel)?.Parent as MainViewModel)?.loadLoadingScreen.Invoke();
         }
 
         private void UnloadLoadingScreen()
         {
-            ((this.Parent as PreLogInViewModel).Parent as MainViewModel).unloadLoadingScreen.Invoke();
+            ((this.Parent as PreLogInViewModel)?.Parent as MainViewModel)?.unloadLoadingScreen.Invoke();
         }
     }
 }

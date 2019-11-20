@@ -4,10 +4,84 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:EShopUI.Views"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="450"
     d:DesignWidth="800"
+    Background="{StaticResource MenuTabColor}"
     mc:Ignorable="d">
 
-    <Grid />
+    <Grid>
+        <Button
+            x:Name="ButtonBack"
+            Width="70"
+            Height="50"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="{StaticResource MenuTabColor}"
+            BorderBrush="{x:Null}">
+            <materialDesign:PackIcon
+                Width="30"
+                Height="30"
+                Margin="0"
+                Foreground="White"
+                Kind="ArrowBack" />
+        </Button>
+
+        <Border
+            Height="50"
+            Margin="10"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Background="{StaticResource MenuTabColor}">
+            <TextBlock
+                Margin="10"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="30"
+                Text="{Binding Product.Name, Mode=TwoWay}" />
+        </Border>
+
+
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <StackPanel
+                Width="250"
+                Height="255"
+                Margin="10"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Background="{StaticResource MenuTabColor}">
+                <Image
+                    Width="230"
+                    Height="230"
+                    Margin="10"
+                    Source="{Binding Product.CurrentImage, Mode=TwoWay}" />
+            </StackPanel>
+            <StackPanel
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Background="{StaticResource MenuTabColor}">
+                <StackPanel Margin="10,10,10,0" Orientation="Horizontal">
+                    <TextBlock Text="Price: " />
+                    <TextBlock Text="{Binding Product.Price, Mode=TwoWay}" />
+                </StackPanel>
+                <TextBlock Margin="10,0,10,0" Text="Description:" />
+                <TextBlock
+                    Width="300"
+                    Height="206"
+                    Margin="10,0,10,10"
+                    ScrollViewer.CanContentScroll="True"
+                    Text="{Binding Product.Description, Mode=TwoWay}" />
+                <Button
+                    x:Name="AddToCartButton"
+                    Width="120"
+                    Margin="5"
+                    Background="{DynamicResource BackgroundColor}"
+                    BorderBrush="{x:Null}"
+                    Content="Add to cart"
+                    Foreground="Black" />
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
 </UserControl>

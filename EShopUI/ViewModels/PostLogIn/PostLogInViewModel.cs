@@ -8,13 +8,17 @@ namespace EShopUI.ViewModels
     class PostLogInViewModel : Conductor<object>
     {
         public UserModel User { get; set; }
-
         public List<ProductModel> ShoppingCartProducts { get; set; }
         public PostLogInViewModel(UserModel user)
         {
             User = user;
             ShoppingCartProducts = new List<ProductModel>();
             ActivateItem(new UserViewModel(user));
+        }
+
+        public sealed override void ActivateItem(object item)
+        {
+            base.ActivateItem(item);
         }
 
         public void ButtonHome()
@@ -29,7 +33,7 @@ namespace EShopUI.ViewModels
 
         public void ButtonLogOut()
         {
-            (Parent as MainViewModel).ActivateItem(new PreLogInViewModel());
+            (Parent as MainViewModel)?.ActivateItem(new PreLogInViewModel());
         }
 
         public void ButtonCart()
@@ -40,7 +44,7 @@ namespace EShopUI.ViewModels
         public void ViewLoaded()
         {
             if ((ActiveItem as UserViewModel) != null)
-                (ActiveItem as UserViewModel).LoadNewView += LoadNewView;
+                ((UserViewModel) ActiveItem).LoadNewView += LoadNewView;
         }
 
         public void LoadNewView(object view)
