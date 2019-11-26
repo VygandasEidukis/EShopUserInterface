@@ -29,7 +29,10 @@
                 VerticalAlignment="Center"
                 Text="{Binding OverallPrice, Mode=TwoWay}" />
         </StackPanel>
-        <StackPanel Grid.Row="0" HorizontalAlignment="Right">
+        <StackPanel
+            Grid.Row="0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center">
             <Button
                 x:Name="Buy"
                 Width="100"
