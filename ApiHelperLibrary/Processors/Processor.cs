@@ -72,5 +72,10 @@ namespace ApiHelperLibrary.Processors
         {
             return ApiPageLink + $"Cart/Remove/{userId}/{productId}";
         }
+
+        public static string LinkCartPurchaseProducts(int userId)
+        {
+            return ApiPageLink + $"Cart/Purchase/{userId}";
+        }
     }
 }

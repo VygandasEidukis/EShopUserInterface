@@ -45,9 +45,15 @@ namespace ApiHelperLibrary.Processors
             }
         }
 
-        public async void ProcessCartContent(int CartID)
+        public static async void ProcessCartContent(int userId)
         {
-
+            using (HttpResponseMessage response = await ApiHelper.apiClient.GetAsync(LinkCartPurchaseProducts(userId)))
+            {
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception("Failed to purchase");
+                }
+            }
         }
     }
 }

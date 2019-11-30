@@ -12,10 +12,7 @@ namespace EShopUI.ViewModels
 {
     class ShoppingCartViewModel : Screen
     {
-        public int UserId
-        {
-            get => (Parent as PostLogInViewModel).User.Id;
-        }
+        public int UserId => ((PostLogInViewModel) Parent).User.Id;
         private double _OverallPrice;
 
         public double OverallPrice
@@ -28,7 +25,7 @@ namespace EShopUI.ViewModels
 
         public BindableCollection<ProductModel> Products
         {
-            get { return _Products; }
+            get => _Products;
             set
             {
                 _Products = value;
@@ -46,17 +43,16 @@ namespace EShopUI.ViewModels
 
         public async void Loaded()
         {
+            Products = new BindableCollection<ProductModel>();
             var tempProd = await CartProcessor.GetCartProducts(UserId).ConfigureAwait(true);
-            foreach (var product in tempProd)
-            {
-                Products.Add(product);
-            }
+            tempProd.ForEach(product => Products.Add(product));
             CalculatePrice();
         }
 
         public void Buy()
         {
-            MessageBox.Show("test");
+            CartProcessor.ProcessCartContent(UserId);
+            Loaded();
         }
 
         public void ProductClicked(object obj)
