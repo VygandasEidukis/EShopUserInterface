@@ -44,13 +44,33 @@ namespace ApiHelperLibrary.Processors
             return ApiPageLink + "Product";
         }
 
-        public static string LinkUploadImage(int ProductID)
+        public static string LinkUploadImage(int productId)
         {
-            return ApiPageLink + $"Image/{ProductID}";
+            return ApiPageLink + $"Image/{productId}";
         }
         public static string LinkSearchByUsername(string username)
         {
             return ApiPageLink + $"search/username/{username}";
+        }
+
+        public static string LinkCartCreateCartForUser(int userId)
+        {
+            return ApiPageLink + $"Cart/Create/{userId}";
+        }
+
+        public static string LinkCartAddProduct(int userId, int productId)
+        {
+            return ApiPageLink + $"Cart/Add/{userId}/{productId}";
+        }
+
+        public static string LinkCartGetProducts(int userId)
+        {
+            return ApiPageLink + $"Cart/{userId}";
+        }
+
+        public static string LinkCartRemoveProduct(int productId, int userId)
+        {
+            return ApiPageLink + $"Cart/Remove/{userId}/{productId}";
         }
     }
 }

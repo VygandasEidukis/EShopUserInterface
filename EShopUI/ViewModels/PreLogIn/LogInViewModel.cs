@@ -21,7 +21,7 @@ namespace EShopUI.ViewModels
         private string _TextBoxUsername;
         public string TextBoxUsername
         {
-            get { return _TextBoxUsername; }
+            get => _TextBoxUsername;
             set
             {
                 _TextBoxUsername = value;
@@ -32,7 +32,7 @@ namespace EShopUI.ViewModels
         private string _TextBoxPassword;
         public string TextBoxPassword
         {
-            get { return _TextBoxPassword; }
+            get => _TextBoxPassword;
             set
             {
                 _TextBoxPassword = value;
@@ -58,7 +58,7 @@ namespace EShopUI.ViewModels
             else
             {
                 CallNotification("Logged in as", $"{user.FirstName}  {user.LastName}");
-                ((Parent as PreLogInViewModel).Parent as MainViewModel).ActiveItem = new PostLogInViewModel(user);
+                ((Parent as PreLogInViewModel)?.Parent as MainViewModel).ActiveItem = new PostLogInViewModel(user);
             }
         }
 
@@ -66,10 +66,8 @@ namespace EShopUI.ViewModels
         {
             try
             {
-                UserModel LoginDetails = new UserModel();
-                LoginDetails.Username = username;
-                LoginDetails.Password = password;
-                var user = await UserProcessor.LogInUser(LoginDetails).ConfigureAwait(true);
+                var loginDetails = new UserModel {Username = username, Password = password};
+                var user = await UserProcessor.LogInUser(loginDetails).ConfigureAwait(true);
                 UnloadLoadingScreen();
                 return user;
             }

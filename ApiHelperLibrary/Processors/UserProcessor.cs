@@ -38,12 +38,9 @@ namespace ApiHelperLibrary.Processors
         {
             using (HttpResponseMessage response = await ApiHelper.apiClient.PostAsJsonAsync<UserModel>(LinkLogInUser(), user))
             {
-                if (response.IsSuccessStatusCode)
-                {
-                    var userJson = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<UserModel>(userJson);
-                }
-                throw new Exception("Unexpected error in UserProcessor");
+                if (!response.IsSuccessStatusCode) throw new Exception("Unexpected error in UserProcessor");
+                var userJson = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<UserModel>(userJson);
             }
         }
 

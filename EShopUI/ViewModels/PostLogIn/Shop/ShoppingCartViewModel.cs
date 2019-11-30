@@ -6,35 +6,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using ApiHelperLibrary.Processors;
 
 namespace EShopUI.ViewModels
 {
     class ShoppingCartViewModel : Screen
     {
+        public int UserId
+        {
+            get => (Parent as PostLogInViewModel).User.Id;
+        }
         private double _OverallPrice;
 
         public double OverallPrice
         {
             get => _OverallPrice;
             set { _OverallPrice = value; NotifyOfPropertyChange(()=>OverallPrice); }
-        }
-
-        private CartModel _Cart;
-
-        public CartModel Cart
-        {
-            get => _Cart;
-            set 
-            { 
-                _Cart = value;
-                NotifyOfPropertyChange(()=>Cart);
-                Products = new BindableCollection<ProductModel>();
-                foreach (var product in Cart.Products)
-                {
-                    _Products.Add(product);
-                }
-                CalculatePrice();
-            }
         }
 
         private BindableCollection<ProductModel> _Products;
@@ -46,14 +33,25 @@ namespace EShopUI.ViewModels
             {
                 _Products = value;
                 NotifyOfPropertyChange(()=>Products);
+                CalculatePrice();
             }
         }
 
 
 
-        public ShoppingCartViewModel(List<ProductModel> product)
+        public ShoppingCartViewModel()
+        { 
+            Products = new BindableCollection<ProductModel>();
+        }
+
+        public async void Loaded()
         {
-            Cart = new CartModel {Products = product};
+            var tempProd = await CartProcessor.GetCartProducts(UserId).ConfigureAwait(true);
+            foreach (var product in tempProd)
+            {
+                Products.Add(product);
+            }
+            CalculatePrice();
         }
 
         public void Buy()
@@ -64,14 +62,15 @@ namespace EShopUI.ViewModels
         public void ProductClicked(object obj)
         {
             if (obj == null) return;
-            Cart.Products.Remove(obj as ProductModel);
-            Products.Remove(obj as ProductModel);
+            var prod = obj as ProductModel;
+            Products.Remove(prod);
+            CartProcessor.RemoveProductFromCart(prod,UserId);
             CalculatePrice();
         }
 
         public void CalculatePrice()
         {
-            OverallPrice = Cart.Products.Sum(product => product.Price);
+            OverallPrice = Products.Sum(product => product.Price);
         }
     }
 }

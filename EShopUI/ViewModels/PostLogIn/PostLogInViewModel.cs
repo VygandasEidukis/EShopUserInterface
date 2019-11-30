@@ -38,7 +38,7 @@ namespace EShopUI.ViewModels
 
         public void ButtonCart()
         {
-            ActivateItem(new ShoppingCartViewModel(ShoppingCartProducts));
+            ActivateItem(new ShoppingCartViewModel());
         }
 
         public void ViewLoaded()

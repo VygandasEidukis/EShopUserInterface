@@ -1,4 +1,5 @@
 ﻿using ApiHelperLibrary.Models;
+using ApiHelperLibrary.Processors;
 using Caliburn.Micro;
 
 namespace EShopUI.ViewModels
@@ -19,7 +20,9 @@ namespace EShopUI.ViewModels
 
         public void AddToCartButton()
         {
-            ((Parent as VisitUserViewModel)?.Parent as PostLogInViewModel)?.ShoppingCartProducts.Add(Product);
+            var user = ((Parent as VisitUserViewModel)?.Parent as PostLogInViewModel)?.User;
+            CartProcessor.AddProductToCart(Product, user);
+
             (((Parent as VisitUserViewModel)?.Parent as PostLogInViewModel)?.Parent as MainViewModel)?.Notify($"{Product.Name} has been added to cart");
         }
         
