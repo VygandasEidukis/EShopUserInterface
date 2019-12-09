@@ -57,7 +57,7 @@ namespace EShopUI.ViewModels
         public async void SearchButton()
         {
             var products = await SearchProcessor.SearchByEuclidean(Price, selectedItemsType).ConfigureAwait(true);
-            (Parent as PostLogInViewModel).ActivateItem(new ProductViewModel(products));
+            (Parent as dynamic).ActivateItem(new ProductViewModel(products));
         }
 
     }

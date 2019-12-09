@@ -88,10 +88,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModels\PostLogIn\AdvancedSearchViewModel.cs" />
+    <Compile Include="ViewModels\PostLogIn\Search\AdvancedSearchViewModel.cs" />
     <Compile Include="ViewModels\PostLogIn\Featured\FeaturedViewModel.cs" />
     <Compile Include="ViewModels\PostLogIn\Shop\CreateProductViewModel.cs" />
-    <Compile Include="ViewModels\PostLogIn\SearchViewModel.cs" />
+    <Compile Include="ViewModels\PostLogIn\Search\SearchViewModel.cs" />
     <Compile Include="ViewModels\PostLogIn\Shop\DetailedProductViewModel.cs" />
     <Compile Include="ViewModels\PostLogIn\Shop\ShoppingCartViewModel.cs" />
     <Compile Include="ViewModels\PostLogIn\UserViewModel.cs" />

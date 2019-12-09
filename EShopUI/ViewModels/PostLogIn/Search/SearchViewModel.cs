@@ -1,7 +1,7 @@
 ﻿using ApiHelperLibrary.Models;
 using ApiHelperLibrary.Processors;
 using Caliburn.Micro;
-using EShopUI.ViewModels.PostLogIn;
+using EShopUI.ViewModels;
 using EShopUI.Views;
 
 namespace EShopUI.ViewModels

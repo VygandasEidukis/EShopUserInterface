@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ApiHelperLibrary.Models;
+using ApiHelperLibrary.Processors;
 using Caliburn.Micro;
 
 namespace EShopUI.ViewModels
 {
-    class FeaturedViewModel : Screen
+    class FeaturedViewModel : Conductor<object>
     {
         private BindableCollection<ProductModel> _Products;
 
@@ -25,12 +26,14 @@ namespace EShopUI.ViewModels
 
         public FeaturedViewModel()
         {
-            
+            Products = new BindableCollection<ProductModel>();
         }
 
         public async void Loaded()
         {
-            
+            var prods = await EuklideanProcessor.GetFeaturedProducts().ConfigureAwait(true);
+            Products.AddRange(prods);
+            ActivateItem(new ProductViewModel(Products.ToList()));
         }
     }
 }

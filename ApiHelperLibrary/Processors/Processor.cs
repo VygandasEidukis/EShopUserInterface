@@ -87,5 +87,10 @@ namespace ApiHelperLibrary.Processors
         {
             return ApiPageLink + $"Product/Search/Euclidean/";
         }
+
+        public static string LinkGetFeatured()
+        {
+            return ApiPageLink + $"Featured/";
+        }
     }
 }

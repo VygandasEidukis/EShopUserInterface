@@ -20,10 +20,21 @@ namespace EShopUI.ViewModels
 
         public void AddToCartButton()
         {
-            var user = ((Parent as dynamic)?.Parent as dynamic)?.User;
+            var user = GetPostLogin().User;
             CartProcessor.AddProductToCart(Product, user);
 
             (((Parent as VisitUserViewModel)?.Parent as PostLogInViewModel)?.Parent as MainViewModel)?.Notify($"{Product.Name} has been added to cart");
+        }
+
+        private dynamic GetPostLogin()
+        {
+            dynamic parent = Parent as dynamic;
+            while (!(parent is PostLogInViewModel))
+            {
+                parent = parent.Parent as dynamic;
+            }
+
+            return parent;
         }
         
     }

@@ -24,7 +24,10 @@
                 Margin="5"
                 ItemsSource="{Binding itemsType, Mode=TwoWay}"
                 SelectedItem="{Binding selectedItemsType, Mode=TwoWay}" />
-            <Button x:Name="SearchButton" Margin="5" />
+            <Button
+                x:Name="SearchButton"
+                Margin="5"
+                Content="Search" />
         </StackPanel>
     </Grid>
 </UserControl>

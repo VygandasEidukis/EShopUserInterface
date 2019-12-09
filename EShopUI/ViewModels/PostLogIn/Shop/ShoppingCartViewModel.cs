@@ -45,7 +45,7 @@ namespace EShopUI.ViewModels
         {
             Products = new BindableCollection<ProductModel>();
             var tempProd = await CartProcessor.GetCartProducts(UserId).ConfigureAwait(true);
-            tempProd.ForEach(product => Products.Add(product));
+            Products.AddRange(tempProd);
             CalculatePrice();
         }
 
