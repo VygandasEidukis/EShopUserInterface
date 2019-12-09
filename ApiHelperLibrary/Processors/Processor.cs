@@ -77,5 +77,15 @@ namespace ApiHelperLibrary.Processors
         {
             return ApiPageLink + $"Cart/Purchase/{userId}";
         }
+
+        public static string LinkGetPrductTypes()
+        {
+            return ApiPageLink + $"Product/Type";
+        }
+
+        public static string LinkSearchProductsByEuclidean()
+        {
+            return ApiPageLink + $"Product/Search/Euclidean/";
+        }
     }
 }

@@ -13,6 +13,8 @@ namespace ApiHelperLibrary.Models
         public string Description { get; set; }
         public double Price { get; set; }
         public int UserID { get; set; }
+        public int CategoryID { get; set; }
+        public ProductType ProductType { get; set; }
         public string CurrentImage { get; set; }
 
         private List<ImageModel> _ProductImages;

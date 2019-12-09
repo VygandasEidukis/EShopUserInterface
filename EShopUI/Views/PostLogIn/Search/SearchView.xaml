@@ -38,6 +38,13 @@
                 Background="{StaticResource MenuTabColor}"
                 Content="Search"
                 Foreground="Black" />
+            <Button
+                x:Name="AdvancedSearchButton"
+                Margin="20,0,0,0"
+                cal:Message.Attach="[Event Click] = [Action AdvancedSearchButton]"
+                Background="{StaticResource MenuTabColor}"
+                Content="Advanced Search"
+                Foreground="Black" />
         </StackPanel>
 
         <ScrollViewer Grid.Row="2" Grid.Column="1">

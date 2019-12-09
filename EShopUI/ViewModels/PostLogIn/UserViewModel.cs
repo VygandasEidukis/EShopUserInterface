@@ -21,7 +21,6 @@ namespace EShopUI.ViewModels
             }
         }
 
-
         public UserViewModel(UserModel user)
         {
             User = user;

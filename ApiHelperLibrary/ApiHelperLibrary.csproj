@@ -50,14 +50,17 @@
   <ItemGroup>
     <Compile Include="ApiHelper.cs" />
     <Compile Include="Models\CartModel.cs" />
+    <Compile Include="Models\EuklideanModel.cs" />
     <Compile Include="Models\ImageModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\SingleImageModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Processors\CartProcessor.cs" />
+    <Compile Include="Processors\EuklideanProcessor.cs" />
     <Compile Include="Processors\ImageProcessor.cs" />
     <Compile Include="Processors\Processor.cs" />
     <Compile Include="Processors\ProductProcessor.cs" />
+    <Compile Include="Models\ProductType.cs" />
     <Compile Include="Processors\SearchProcessor.cs" />
     <Compile Include="Processors\UserProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

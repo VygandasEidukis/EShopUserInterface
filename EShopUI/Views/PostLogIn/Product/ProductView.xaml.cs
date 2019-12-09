@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace EShopUI.Views
 {
     /// <summary>
-    /// Interaction logic for HomeView.xaml
+    /// Interaction logic for ProductView.xaml
     /// </summary>
-    public partial class HomeView : UserControl
+    public partial class ProductView : UserControl
     {
-        public HomeView()
+        public ProductView()
         {
             InitializeComponent();
         }

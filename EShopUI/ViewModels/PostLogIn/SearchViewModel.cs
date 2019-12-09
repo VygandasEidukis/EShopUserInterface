@@ -2,6 +2,7 @@
 using ApiHelperLibrary.Processors;
 using Caliburn.Micro;
 using EShopUI.ViewModels.PostLogIn;
+using EShopUI.Views;
 
 namespace EShopUI.ViewModels
 {
@@ -68,6 +69,11 @@ namespace EShopUI.ViewModels
                     }
                 }
             }
+        }
+
+        public async void AdvancedSearchButton()
+        {
+            (Parent as PostLogInViewModel).LoadNewView(new AdvancedSearchViewModel());
         }
     }
 }

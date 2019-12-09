@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
+using ProductType = ApiHelperLibrary.Models.ProductType;
 
 namespace EShopUI.ViewModels
 {
@@ -17,6 +18,28 @@ namespace EShopUI.ViewModels
         #region props
         public delegate void LoadView(object view);
         public LoadView LoadNewView { get; set; }
+
+        private BindableCollection<ProductType> SelectionProductTypes_;
+
+        public BindableCollection<ProductType> SelectionProductTypes
+        {
+            get { return SelectionProductTypes_; }
+            set
+            {
+                SelectionProductTypes_ = value;
+                NotifyOfPropertyChange(()=>SelectionProductTypes);
+            }
+        }
+
+        private ProductType SelectedProductTypes_;
+
+        public ProductType SelectedProductTypes
+        {
+            get { return SelectedProductTypes_; }
+            set { SelectedProductTypes_ = value; NotifyOfPropertyChange(()=>SelectedProductTypes); }
+        }
+
+
 
         private ProductModel _Product;
 
@@ -53,9 +76,18 @@ namespace EShopUI.ViewModels
             Product = new ProductModel();
         }
 
-        public void ViewLoaded()
+        public async void ViewLoaded()
         {
             Product.UserID = (Parent as PostLogInViewModel).User.Id;
+            var productTypes = await ProductProcessor.GetProductTypes();
+            SelectionProductTypes = new BindableCollection<ProductType>();
+            foreach (ProductType productType in productTypes)
+            {
+                SelectionProductTypes.Add(productType);
+            }
+
+            if (SelectionProductTypes.Count > 0)
+                SelectedProductTypes = SelectionProductTypes[0];
         }
 
         #region Events
@@ -77,6 +109,7 @@ namespace EShopUI.ViewModels
             if(VerifyFields())
             {
                 //save Product info
+                Product.CategoryID = SelectedProductTypes.Id;
                 int ProductID = await ProductProcessor.CreateProduct(Product).ConfigureAwait(false);
                 //save Product Images
                 await ImageProcessor.SaveImage(ImageDisplayPath, ProductID).ConfigureAwait(false);

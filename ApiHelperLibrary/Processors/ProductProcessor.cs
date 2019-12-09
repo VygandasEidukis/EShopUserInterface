@@ -22,6 +22,17 @@ namespace ApiHelperLibrary.Processors
                 throw new Exception("Unexpected error in ProductProcessor");
             }
         }
+        public static async Task<List<ProductType>> GetProductTypes()
+        {
+            using (HttpResponseMessage response = await ApiHelper.apiClient.GetAsync(LinkGetPrductTypes()))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsAsync<List<ProductType>>();
+                }
+                throw new Exception("Unexpected error in ProductProcessor");
+            }
+        }
 
         public static async Task<int> CreateProduct(ProductModel product)
         {

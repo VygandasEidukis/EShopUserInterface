@@ -31,6 +31,7 @@
             <StackPanel Orientation="Vertical">
 
                 <Button
+                    x:Name="FeaturedButton"
                     Height="50"
                     Background="{x:Null}"
                     BorderBrush="{x:Null}">

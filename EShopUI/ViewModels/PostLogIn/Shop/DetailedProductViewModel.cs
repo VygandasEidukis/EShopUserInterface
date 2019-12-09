@@ -15,12 +15,12 @@ namespace EShopUI.ViewModels
 
         public void ButtonBack()
         {
-            ((VisitUserViewModel) Parent).ActiveItem = null;
+            ((dynamic) Parent).ActiveItem = null;
         }
 
         public void AddToCartButton()
         {
-            var user = ((Parent as VisitUserViewModel)?.Parent as PostLogInViewModel)?.User;
+            var user = ((Parent as dynamic)?.Parent as dynamic)?.User;
             CartProcessor.AddProductToCart(Product, user);
 
             (((Parent as VisitUserViewModel)?.Parent as PostLogInViewModel)?.Parent as MainViewModel)?.Notify($"{Product.Name} has been added to cart");

@@ -21,6 +21,11 @@ namespace EShopUI.ViewModels
             base.ActivateItem(item);
         }
 
+        public void FeaturedButton()
+        {
+            ActivateItem(new FeaturedViewModel());
+        }
+
         public void ButtonHome()
         {
             ActivateItem(new UserViewModel(User));

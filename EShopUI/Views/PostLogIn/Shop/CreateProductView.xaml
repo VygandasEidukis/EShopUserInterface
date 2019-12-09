@@ -50,6 +50,11 @@
                     x:Name="TextProductPrice"
                     PreviewTextInput="TextBox_PreviewTextInput"
                     Text="{Binding Product.Price, Mode=TwoWay}" />
+                <TextBlock Text="Product type" />
+                <ComboBox
+                    x:Name="SelectionProductTypes"
+                    ItemsSource="{Binding SelectionProductTypes, Mode=TwoWay}"
+                    SelectedItem="{Binding SelectedProductTypes, Mode=TwoWay}" />
                 <TextBlock Text="Description" />
                 <TextBox
                     x:Name="TextProductDescription"
