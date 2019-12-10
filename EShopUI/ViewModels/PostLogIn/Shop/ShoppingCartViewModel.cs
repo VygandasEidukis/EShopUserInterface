@@ -43,7 +43,7 @@ namespace EShopUI.ViewModels
 
         public async void Loaded()
         {
-            Products = new BindableCollection<ProductModel>();
+            Products.Clear();
             var tempProd = await CartProcessor.GetCartProducts(UserId).ConfigureAwait(true);
             Products.AddRange(tempProd);
             CalculatePrice();

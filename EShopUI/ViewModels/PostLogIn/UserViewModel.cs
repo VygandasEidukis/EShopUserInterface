@@ -1,4 +1,6 @@
-﻿using ApiHelperLibrary.Models;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using ApiHelperLibrary.Models;
 using ApiHelperLibrary.Processors;
 using Caliburn.Micro;
 
@@ -21,19 +23,38 @@ namespace EShopUI.ViewModels
             }
         }
 
+        private BindableCollection<ProductModel> _Products;
+
+        public BindableCollection<ProductModel> Products
+        {
+            get
+            {
+                var prodTemp = new BindableCollection<ProductModel>();
+                prodTemp.AddRange(User.Products);
+                return prodTemp;
+            }
+            set
+            {
+                User.Products = value.ToList();
+                NotifyOfPropertyChange(()=> Products);
+            }
+        }
+
+
         public UserViewModel(UserModel user)
         {
             User = user;
-            FetchProducts();
+            
         }
 
-        public void ViewLoaded()
+        public async void ViewLoaded()
         {
             //set up delegates if view was re-called
             (Parent as PostLogInViewModel).ViewLoaded();
+            await FetchProducts().ConfigureAwait(false);
         }
 
-        private async void FetchProducts()
+        private async Task FetchProducts()
         {
             User.Products = await ProductProcessor.GetProductsByUserID(User.Id).ConfigureAwait(true);
         }

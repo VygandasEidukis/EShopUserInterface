@@ -51,7 +51,7 @@
                 <ItemsControl
                     x:Name="UserProducts"
                     HorizontalAlignment="Center"
-                    ItemsSource="{Binding User.Products, Mode=TwoWay}">
+                    ItemsSource="{Binding Products, Mode=TwoWay}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Border Width="300" Height="300">
