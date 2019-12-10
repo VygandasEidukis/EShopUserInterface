@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using ApiHelperLibrary.Models;
 using ApiHelperLibrary.Processors;
@@ -30,7 +31,8 @@ namespace EShopUI.ViewModels
             get
             {
                 var prodTemp = new BindableCollection<ProductModel>();
-                prodTemp.AddRange(User.Products);
+                if (User.Products != null)
+                    prodTemp.AddRange(User.Products);
                 return prodTemp;
             }
             set
@@ -47,29 +49,42 @@ namespace EShopUI.ViewModels
             
         }
 
-        public async void ViewLoaded()
+        public void ViewLoaded()
         {
-            //set up delegates if view was re-called
-            (Parent as PostLogInViewModel).ViewLoaded();
-            await FetchProducts().ConfigureAwait(false);
+            new Thread(() =>
+            {
+                (Parent as PostLogInViewModel)?.ViewLoaded();
+                FetchProducts();
+            }).Start();
         }
 
-        private async Task FetchProducts()
+        private void FetchProducts()
         {
-            User.Products = await ProductProcessor.GetProductsByUserID(User.Id).ConfigureAwait(true);
-        }
-        private async void FetchProductImages()
-        {
-            for(int i = 0; i < User.Products.Count; i++)
+            var t = new Task(async () =>
             {
-                User.Products[i].ProductImages = await ImageProcessor.GetImagesByProductId(User.Products[i].Id).ConfigureAwait(true);
-            }
+                User.Products = await ProductProcessor.GetProductsByUserID(User.Id).ConfigureAwait(true);
+                NotifyOfPropertyChange(() => Products);
+            });
+
+            t.Start();
+
+        }
+        private void FetchProductImages()
+        {
+            var t = new Task(async () =>
+            {
+                foreach (var product in User.Products)
+                {
+                    product.ProductImages = await ImageProcessor.GetImagesByProductId(product.Id).ConfigureAwait(true);
+                }
+            });
+
+            t.Start();
         }
 
         public void AddProductButton()
         {
-            if (LoadNewView != null)
-                LoadNewView.Invoke(new CreateProductViewModel());
+            LoadNewView?.Invoke(new CreateProductViewModel());
         }
     }
 }
