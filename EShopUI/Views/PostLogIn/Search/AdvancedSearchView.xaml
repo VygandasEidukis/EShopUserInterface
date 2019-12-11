@@ -17,7 +17,7 @@
             VerticalAlignment="Center"
             Orientation="Vertical">
             <TextBlock Margin="5">Price</TextBlock>
-            <TextBox x:Name="Price" Margin="5" />
+            <TextBox PreviewTextInput="Price_OnPreviewTextInput" x:Name="Price" Margin="5" />
             <TextBlock Margin="5" Text="Type" />
             <ComboBox
                 x:Name="itemTypeField"

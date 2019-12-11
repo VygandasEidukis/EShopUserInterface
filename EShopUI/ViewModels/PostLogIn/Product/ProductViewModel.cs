@@ -61,7 +61,7 @@ namespace EShopUI.ViewModels
 
         private void LoadEditProduct(ProductModel product)
         {
-            //TODO: change to load to edit view
+            ActivateItem(new EditProductViewModel(product));
         }
     }
 }

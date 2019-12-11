@@ -34,13 +34,10 @@ namespace EShopUI.ViewModels
             }
         }
 
-
-
         public ShoppingCartViewModel()
         { 
             Products = new BindableCollection<ProductModel>();
         }
-
         public async void Loaded()
         {
             Products.Clear();

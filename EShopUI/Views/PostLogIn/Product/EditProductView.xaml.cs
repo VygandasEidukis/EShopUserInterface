@@ -17,16 +17,16 @@ using System.Windows.Shapes;
 namespace EShopUI.Views
 {
     /// <summary>
-    /// Interaction logic for AdvancedSearchView.xaml
+    /// Interaction logic for EditProductView.xaml
     /// </summary>
-    public partial class AdvancedSearchView : UserControl
+    public partial class EditProductView : UserControl
     {
-        public AdvancedSearchView()
+        public EditProductView()
         {
             InitializeComponent();
         }
 
-        private void Price_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9.]+");
             e.Handled = regex.IsMatch(e.Text);

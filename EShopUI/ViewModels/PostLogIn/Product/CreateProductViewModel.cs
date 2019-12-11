@@ -36,7 +36,14 @@ namespace EShopUI.ViewModels
         public ProductType SelectedProductTypes
         {
             get { return SelectedProductTypes_; }
-            set { SelectedProductTypes_ = value; NotifyOfPropertyChange(()=>SelectedProductTypes); }
+            set 
+            { 
+                SelectedProductTypes_ = value;
+                NotifyOfPropertyChange(()=>SelectedProductTypes);
+                Product.CategoryID = SelectedProductTypes.Id;
+                if (SelectedProductTypes == null)
+                    SelectedProductTypes = SelectionProductTypes[0];
+            }
         }
 
 
@@ -78,7 +85,7 @@ namespace EShopUI.ViewModels
 
         public async void ViewLoaded()
         {
-            Product.UserID = (Parent as PostLogInViewModel).User.Id;
+            Product.UserID = ((PostLogInViewModel) Parent).User.Id;
             var productTypes = await ProductProcessor.GetProductTypes();
             SelectionProductTypes = new BindableCollection<ProductType>();
             foreach (ProductType productType in productTypes)
@@ -108,12 +115,10 @@ namespace EShopUI.ViewModels
         {
             if(VerifyFields())
             {
-                //save Product info
-                Product.CategoryID = SelectedProductTypes.Id;
                 int ProductID = await ProductProcessor.CreateProduct(Product).ConfigureAwait(false);
                 //save Product Images
                 await ImageProcessor.SaveImage(ImageDisplayPath, ProductID).ConfigureAwait(false);
-                (Parent as PostLogInViewModel).ActiveItem = new UserViewModel((Parent as PostLogInViewModel).User);
+                ((PostLogInViewModel) Parent).ActiveItem = new UserViewModel(((PostLogInViewModel) Parent)?.User);
             }
         }
 

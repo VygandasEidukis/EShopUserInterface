@@ -22,7 +22,6 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-
         <Grid
             x:Name="SideMenu"
             Grid.Column="0"
