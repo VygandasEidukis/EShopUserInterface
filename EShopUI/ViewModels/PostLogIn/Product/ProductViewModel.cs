@@ -10,6 +10,8 @@ namespace EShopUI.ViewModels
 {
     public class ProductViewModel : Conductor<object>
     {
+        public bool IsUser { get; set; } = false;
+
         private BindableCollection<ProductModel> Products_;
 
         public BindableCollection<ProductModel> Products
@@ -25,17 +27,41 @@ namespace EShopUI.ViewModels
         public ProductViewModel(List<ProductModel> products)
         {
             Products = new BindableCollection<ProductModel>();
-            if(products != null)
+            if (products != null)
+                Products.AddRange(products);
+        }
+
+        public ProductViewModel(List<ProductModel> products, bool isUser)
+        {
+            IsUser = isUser;
+            Products = new BindableCollection<ProductModel>();
+            if (products != null)
                 Products.AddRange(products);
         }
 
         public void ProductClicked(object obj)
         {
-            ProductModel product = obj as ProductModel;
-            if (obj != null)
+            if(!(obj is ProductModel)) return;
+            ProductModel product = (ProductModel) obj;
+            if (!IsUser)
             {
-                ActivateItem(new DetailedProductViewModel(product));
+                LoadDetailedView(product);
             }
+            else
+            {
+                LoadEditProduct(product);
+            }
+           
+        }
+
+        private void LoadDetailedView(ProductModel product)
+        {
+            ActivateItem(new DetailedProductViewModel(product));
+        }
+
+        private void LoadEditProduct(ProductModel product)
+        {
+            //TODO: change to load to edit view
         }
     }
 }

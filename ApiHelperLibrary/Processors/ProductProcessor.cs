@@ -17,6 +17,11 @@ namespace ApiHelperLibrary.Processors
                 if (response.IsSuccessStatusCode)
                 {
                     List<ProductModel> products = await response.Content.ReadAsAsync<List<ProductModel>>();
+                    foreach (var product in products)
+                    {
+                        product.ProductImages = await ImageProcessor.GetImagesByProductId(product.Id).ConfigureAwait(true);
+                    }
+
                     return products;
                 }
                 throw new Exception("Unexpected error in ProductProcessor");

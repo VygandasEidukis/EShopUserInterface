@@ -94,8 +94,8 @@
     <Compile Include="ViewModels\PostLogIn\Search\SearchViewModel.cs" />
     <Compile Include="ViewModels\PostLogIn\Shop\DetailedProductViewModel.cs" />
     <Compile Include="ViewModels\PostLogIn\Shop\ShoppingCartViewModel.cs" />
-    <Compile Include="ViewModels\PostLogIn\UserViewModel.cs" />
-    <Compile Include="ViewModels\PostLogIn\Guest\VisitUserViewModel.cs" />
+    <Compile Include="ViewModels\PostLogIn\Profile\UserViewModel.cs" />
+    <Compile Include="ViewModels\PostLogIn\Profile\VisitUserViewModel.cs" />
     <Compile Include="ViewModels\PreLogIn\LogInViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\PostLogIn\PostLogInViewModel.cs" />
@@ -120,10 +120,10 @@
     <Compile Include="Views\PostLogIn\Shop\ShoppingCartView.xaml.cs">
       <DependentUpon>ShoppingCartView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PostLogIn\UserView.xaml.cs">
+    <Compile Include="Views\PostLogIn\Profile\UserView.xaml.cs">
       <DependentUpon>UserView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PostLogIn\Guest\VisitUserView.xaml.cs">
+    <Compile Include="Views\PostLogIn\Profile\VisitUserView.xaml.cs">
       <DependentUpon>VisitUserView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PreLogIn\LogInView.xaml.cs">
@@ -208,11 +208,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PostLogIn\UserView.xaml">
+    <Page Include="Views\PostLogIn\Profile\UserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PostLogIn\Guest\VisitUserView.xaml">
+    <Page Include="Views\PostLogIn\Profile\VisitUserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
