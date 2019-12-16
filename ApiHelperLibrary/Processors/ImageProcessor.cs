@@ -30,17 +30,26 @@ namespace ApiHelperLibrary.Processors
                 using (HttpResponseMessage response = await ApiHelper.apiClient.PostAsJsonAsync<SingleImageModel>(LinkUploadImage(ProductID), new SingleImageModel() { Image = ImageModel.GetImageBytesFromDirectory(ImagePath), FileExtension = Path.GetExtension(ImagePath) }))
                 {
                     response.EnsureSuccessStatusCode();
-                    if (response.IsSuccessStatusCode)
-                    {
-
-                        return;
-                    }
                 }
             }catch(Exception ex)
             {
                 throw new Exception($"Unexpected error in ImageProcessor \nException code: {ex.Message}");
             }
+        }
 
+        public static async Task  UpdateImage(string ImagePath, int ImageId)
+        {
+            try
+            {
+                using (HttpResponseMessage response = await ApiHelper.apiClient.PostAsJsonAsync<SingleImageModel>(LinkUpdateImage(ImageId), new SingleImageModel() { Image = ImageModel.GetImageBytesFromDirectory(ImagePath), FileExtension = Path.GetExtension(ImagePath) }))
+                {
+                    response.EnsureSuccessStatusCode();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Unexpected error in ImageProcessor \nException code: {ex.Message}");
+            }
         }
     }
 }

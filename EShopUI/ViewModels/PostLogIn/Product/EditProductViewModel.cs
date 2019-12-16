@@ -13,6 +13,7 @@ namespace EShopUI.ViewModels
 {
     public class EditProductViewModel : Screen
     {
+        private bool imageChanged = false;
         private string _ImageDisplayPath;
         public string ImageDisplayPath
         {
@@ -62,7 +63,6 @@ namespace EShopUI.ViewModels
 
         public async void ViewLoaded()
         {
-            //Product.UserID = (((Parent as ProductViewModel)?.Parent) as UserViewModel).User.Id;
             var productTypes = await GetProductTypes().ConfigureAwait(true);
             ProductTypes = new BindableCollection<ProductType>();
             if(productTypes != null)
@@ -78,14 +78,17 @@ namespace EShopUI.ViewModels
         {
             if (VerifyFields())
             {
-                //TODO: Add update functionality
-                //save Product info
                 Product.CategoryID = SelectedProductType.Id;
-                //int productId = await CreateProduct(Product).ConfigureAwait(false);
-                //save Product Images
-                //await ImageProcessor.SaveImage(ImageDisplayPath, productId).ConfigureAwait(false);
-                //((PostLogInViewModel) Parent).ActiveItem = new UserViewModel(((PostLogInViewModel) Parent)?.User);
+
+                if(imageChanged)
+                {
+                    await ImageProcessor.UpdateImage(Product.CurrentImage, Product.ProductImages[0].Id).ConfigureAwait(true);
+                }
+                await UpdateProduct(Product).ConfigureAwait(true);
+                //(Parent as PostLogInViewModel).ButtonHome();
+                this.TryClose();
             }
+            
         }
 
         private bool VerifyFields()
@@ -110,6 +113,7 @@ namespace EShopUI.ViewModels
             };
             if (op.ShowDialog() == true)
             {
+                imageChanged = true;
                 ImageDisplayPath = op.FileName;
             }
         }

@@ -29,7 +29,7 @@
                         x:Name="ImageDisplay"
                         Height="250"
                         RenderOptions.BitmapScalingMode="Fant"
-                        Source="{Binding ImageDisplayPath, Mode=TwoWay}" />
+                        Source="{Binding Product.CurrentImage, Mode=TwoWay}" />
                 </Border>
                 <Button
                     x:Name="BrowseButton"

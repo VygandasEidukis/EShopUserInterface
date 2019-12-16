@@ -39,6 +39,11 @@ namespace ApiHelperLibrary.Processors
             return ApiPageLink + $"Image/{id}";
         }
 
+        public static string LinkUpdateProduct(int productId)
+        {
+            return ApiPageLink + $"Product/Update/{productId}";
+        }
+
         public static string LinkCreateNewProduct()
         {
             return ApiPageLink + "Product";
@@ -47,6 +52,11 @@ namespace ApiHelperLibrary.Processors
         public static string LinkUploadImage(int productId)
         {
             return ApiPageLink + $"Image/{productId}";
+        }
+
+        public static string LinkUpdateImage(int imageId)
+        {
+            return ApiPageLink + $"Image/Update/{imageId}";
         }
         public static string LinkSearchByUsername(string username)
         {

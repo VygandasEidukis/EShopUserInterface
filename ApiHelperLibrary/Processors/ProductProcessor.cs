@@ -27,6 +27,7 @@ namespace ApiHelperLibrary.Processors
                 throw new Exception("Unexpected error in ProductProcessor");
             }
         }
+
         public static async Task<List<ProductType>> GetProductTypes()
         {
             using (HttpResponseMessage response = await ApiHelper.apiClient.GetAsync(LinkGetPrductTypes()))
@@ -48,6 +49,14 @@ namespace ApiHelperLibrary.Processors
                     return await response.Content.ReadAsAsync<int>();
                 }
                 throw new Exception($"Unexpected error in ProductProcessor \nError code: \n {response.StatusCode}");
+            }
+        }
+
+        public static async Task UpdateProduct(ProductModel product)
+        {
+            using (HttpResponseMessage response = await ApiHelper.apiClient.PostAsJsonAsync<ProductModel>(LinkUpdateProduct(product.Id), product))
+            {
+                return;
             }
         }
     }
